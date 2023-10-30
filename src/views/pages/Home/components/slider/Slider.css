@@ -1,0 +1,52 @@
+.sliderBgImg1{
+    background-image: url('../../../../../assets/images/homePage/sliderImages/slider-img1-marquee-figure.jpg');
+}
+.sliderBgImg2{
+    background-image: url('../../../../../assets/images/homePage/sliderImages/slider-img2-grill-pesce.jpg');
+}
+.sliderBgImg3{
+    background-image: url('../../../../../assets/images/homePage/sliderImages/slider-img3-marquee-figure.jpg');
+}
+.sliderBgImg1, .sliderBgImg2, .sliderBgImg3{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0; /* Remove default body margin */
+    height: 100vh; /* Set the body height to fill the viewport */
+}
+.sliderImgBg{
+    background-color: black;
+    height: 100vh; /* Set the body height to fill the viewport */
+    opacity: 0.2;
+    z-index: -1;
+   
+}
+.main-slider-txt{
+    font-size: 66px;
+    font-family: 'Marecellus', sans-serif;
+    color: #FFFFFF;
+    margin-top: 600px;
+}
+
+.slider-bg-color{
+    background-color: black;
+    height: 100vh; /* Set the body height to fill the viewport */
+    opacity: 0.6;
+}
+  
+
+
+
+
+  
+ 
+  
+
+ 
+  
+
+  
+
+  
+ 
+  

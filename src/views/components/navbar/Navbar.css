@@ -1,0 +1,39 @@
+.ul-list-lift{
+    align-items: center;
+}
+.ul-list-lift>li>a{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 25px;
+    
+}
+
+.nav-right-ul{
+    align-items: center;
+}
+.nav-right-ul > li{
+    list-style: none;
+    display: inline;
+}
+.nav-right-ul > li > a{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+.reservation-btn{
+    background-color: #ED1D24;
+    border-radius: 50px;
+    padding: 5px 30px 10px 30px;
+}
+
+.navbar {
+    background-color: transparent; /* Initial background color */
+    transition: background-color 0.3s; /* Add a smooth transition effect */
+  }
+  
+  .navbar.scrolled {
+    background-color: #000000; /* Background color when scrolled down */
+  }
+  

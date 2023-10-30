@@ -1,0 +1,38 @@
+.c4-main-bg{
+    background-color: #000000;
+    height: auto;
+}
+.customer-txt{
+    text-align: center;
+    color: gray;
+}
+
+.what-txt{
+    font-size: 50px;
+    font-family: 'Marecellus', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.slider-icon-btn-set{
+    background-color: #000000;
+    border: #000000;
+}
+.slider-main-txt{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: #F0EDEA;
+    text-align: center;
+    
+}
+.slider-name-txt{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #F0EDEA;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.slider-bg-set{
+    height: 400px;
+}

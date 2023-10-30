@@ -1,0 +1,45 @@
+.c2-bg{
+    background-color: #000000;
+    height: 100%;
+}
+.event-txt{
+    font-size: 50px;
+    font-family: 'Marecellus', sans-serif;
+    color: #FFFFFF;
+}
+.more-txt{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: #F0EDEA;
+    font-weight: bold;
+}
+.do-txt{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: #F0EDEA;
+    padding: 0px 0px 16px;
+}
+
+.top-col-set{
+    text-align: center;
+}
+.img-bg-set{
+    background-color: #FFFFFF;
+}
+.h3-san-txt{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    color: #111010;
+    padding: 14.4px 0px 7.2px;
+    text-align: center;
+    font-weight: bold;
+}
+.lorem-txt{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: #111010;
+    text-align: center;
+}
+.btn-bg-set{
+    text-align: center;
+}

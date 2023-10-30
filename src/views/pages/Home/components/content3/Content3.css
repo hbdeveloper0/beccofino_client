@@ -1,0 +1,50 @@
+.bg-margin-set{
+    padding-top: 250px;
+    background-color: #f0edea;
+}
+.c3-h2-txt{
+    font-size: 50px;
+    font-family: 'Marecellus', sans-serif;
+    color: #111010;
+    margin: auto;
+}
+.dinner-txt{
+    font-size: 32px;
+    font-family: 'Marecellus', sans-serif;
+    color: #111010;
+    
+}
+.all-txt{
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    color: #111010;
+}
+
+.left-row-set{
+    margin-top: 150px;
+    padding-bottom: 80px;
+}
+.right-row-set{
+    margin-top: 80px;
+    padding-bottom: 50px;
+}
+.knifeImg{
+    margin: auto;
+    margin-top: 10px;
+}
+.middle-border{
+    position: relative; /* Make the div a positioning context */
+}
+.middle-border::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Position the border in the middle */
+    width: 1px; /* Border width (vertical line) */
+    background-color: grey; /* Border color */
+  }
+
+  
+
+  
