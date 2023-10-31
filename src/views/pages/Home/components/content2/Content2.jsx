@@ -5,7 +5,7 @@ import c2Img2 from '../../../../../assets/images/homePage/content2/c2-p2-forage-
 import c2Img3 from '../../../../../assets/images/homePage/content2/c2p3-Medium-4-1.jpg'
 import c2MainImg from '../../../../../assets/images/homePage/content2/c2-main-img-20230309_214444-Large-1.jpg'
 
-import GlobelButton from '../../../../../components/GlobelButton'
+import GlobelButton from '../../../../components/GlobalButton/GlobelButton'
 
 const Content2 = () => {
     return (
