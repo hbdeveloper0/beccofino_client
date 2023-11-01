@@ -6,7 +6,7 @@ import c5Img2 from '../../../../../assets/images/homePage/content5/croped/202008
 import c5Img3 from '../../../../../assets/images/homePage/content5/croped/IMG_4886-Medium.jpg'
 import c5Img4 from '../../../../../assets/images/homePage/content5/croped/IMG_4904-Medium.jpg'
 
-import GlobelButton from '../../../../../components/GlobelButton'
+import GlobelButton from '../../../../components/GlobalButton/GlobelButton'
 
 const Content5 = () => {
     return (

@@ -4,7 +4,7 @@ import './Content1.css'
 import rightImg from '../../../../../assets/images/homePage/content1/20210807_235139-Medium-1-1-1024x597.jpg'
 import leftImg from '../../../../../assets/images/homePage/content1/20191203_181803-Medium-1.jpg'
 
-import GlobelButton from '../../../../../components/GlobelButton'
+import GlobelButton from '../../../../components/GlobalButton/GlobelButton'
 
 const Content1 = () => {
     return (

@@ -2,19 +2,19 @@ import React from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import SubSlider from '../../components/SubSlider/SubSlider'
 import Footer from '../../components/footer/Footer'
-import SliderImg from '../../../assets/images/mediaPage/mediaSlider/sliderImg.jpg'
+import SliderImg from '../../../assets/images/menuPage/menuSliderImg.jpg'
 import navLogo from '../../../assets/images/logos/navLogoBlack.png'
-import MediaContent from './MediaContent'
+import MenuContent from './MenuContent'
 
-const Media = () => {
+const Menu = () => {
     return (
         <div>
             <Navbar logo={navLogo} bgColor={'#f0edea'} textColor={'#111010'}/>
-            <SubSlider img={SliderImg} name='Media' />
-            <MediaContent/>
+            <SubSlider img={SliderImg} name='Menu' />
+            <MenuContent/>
             <Footer/>
         </div>
     )
 }
 
-export default Media
+export default Menu

@@ -8,7 +8,7 @@ import SouthEastIcon from '@mui/icons-material/SouthEast';
 
 const Footer2 = () => {
     return (
-        <Grid container>
+        <Grid container >
             <Grid item xs={12} sx={{backgroundColor: '#111010', height: '100%'}}>
                 <Container>
                     <Grid container sx={{ marginTop: '60px', marginBottom: '60px'}}>
@@ -79,7 +79,7 @@ const Footer2 = () => {
                                 <Typography>Copyrights  2023 All Rights Reserved.</Typography>
                             </Grid>
                             <Grid item xs={6} sx={{ textAlign: 'right' }}>
-                                <Typography>Developed with ❤ by Hybreathe</Typography>
+                                <Typography>Developed with 💚 by Hybreathe</Typography>
                             </Grid>
                         </Container>
                     </Grid>

@@ -4,7 +4,7 @@ import './GlobelButton.css'
 const GlobelButton = (props) => {
     return (
         <div>
-            <button className='btn discover-btn'>{props.value}</button>
+            <button className='btn discover-btn' onClick={props.onClick}>{props.value}</button>
         </div>
     )
 }

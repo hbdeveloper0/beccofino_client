@@ -7,6 +7,7 @@ import Content4 from './components/content4/Content4'
 import Content5 from './components/content5/Content5'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
+import navLogo from '../../../assets/images/logos/navbarLogoWhite.png'
 
 
 const Home = () => {
@@ -30,7 +31,7 @@ const Home = () => {
       }, []);
     return (
         <div>
-            <Navbar/>
+            <Navbar logo={navLogo} bgColor={'transparent'} textColor={'#F0EDEA'}/>
             <Slider/>
             <Content1/>
             <Content2/>
