@@ -6,7 +6,7 @@ import Input from '@mui/joy/Input';
 
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
-import Motion from '../../../components/Motion.js';
+import Motion from '../../components/Motion';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { Autocomplete, Button, CardActions, CardContent, Container, Divider, Grid, Tab, Tabs, TextField, Typography } from '@mui/material';
@@ -28,7 +28,7 @@ function TabPanel({ children, value, index, ...other }) {
     );
 }
 
-TabPanel.propTypes = {
+TabPanel.propTypes =     {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired

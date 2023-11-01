@@ -2,9 +2,9 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './views/pages/Home';
-import Media from './views/pages/Media'
+import Media from './views/pages/media'
 import Rreservation from './views/pages/reservation';
-import Event from './views/pages/Event'
+import Event from './views/pages/eventPage'
 import Menu from './views/pages/Menu';
 
 
