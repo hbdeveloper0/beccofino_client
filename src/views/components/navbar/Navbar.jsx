@@ -159,7 +159,7 @@ function Navbar(props) {
                                 <Button onClick={handleCloseNavMenu} sx={{ my: 4, mx: 2, textTransform: 'none'}}>
                                     <Link
                                         style={{ textDecoration: 'none', color: `${props.textColor}` }}
-                                        to='/'
+                                        to='/contact'
                                     >
                                         Contact
                                     </Link>

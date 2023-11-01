@@ -12,7 +12,7 @@ import Form from './Form'
 const Rreservation = () => {
     return (
         <div>
-            <Navbar logo={navLogo} bgColor={'#f0edea'} textColor={'#111010'}/>
+        <Navbar logo={navLogo} bgColor={'#f0edea'} textColor={'#111010'}/>
         <SubSlider img={Reservation} name='Reservation' />
           <Grid  sx={{background:"#f0edea"}}>
           <BookRreservation/>

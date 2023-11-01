@@ -3,7 +3,7 @@ import React from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import Input from '@mui/joy/Input';
-
+import { useNavigate } from "react-router-dom";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 import Motion from '../../components/Motion';
@@ -17,6 +17,7 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import PaymentIcon from '@mui/icons-material/Payment';
 import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
+import Calender from './Calender';
 
 
 // tabs
@@ -84,7 +85,7 @@ const Form = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+    const navigate = useNavigate();
     return (
         <Motion>
         <Container maxWidth="md" sx={{background:"#ffff",p:"0px !important",borderRadius:"9px"}}>
@@ -191,7 +192,7 @@ const Form = () => {
                                  </Grid>
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
-                               sdsd
+                               <Calender/>
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
                                 <Grid>
@@ -272,7 +273,7 @@ const Form = () => {
                                 </Grid>
                                 <Grid item xs={2} >
                                 <Button  sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="xs">
-                                Back
+                              Add
                             </Button>
                                 </Grid>
                                  </Grid>
@@ -312,9 +313,9 @@ const Form = () => {
                                         </Button>
                                     // </AnimateButton>
                                 )}
-                                {value > 2 && (
+                                {value >2 && (
                                     // <AnimateButton>
-                                        <Button sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="large" >
+                                        <Button onClick={()=>navigate('/checkout')} sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="large" >
                                             save
                                         </Button>
                                     // </AnimateButton>
