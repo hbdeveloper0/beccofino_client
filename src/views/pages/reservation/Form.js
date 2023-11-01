@@ -2,7 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import Input from '@mui/joy/Input';
 
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+
+import Motion from '../../components/Motion';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { Autocomplete, Button, CardActions, CardContent, Container, Divider, Grid, Tab, Tabs, TextField, Typography } from '@mui/material';
@@ -12,6 +16,8 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import PaymentIcon from '@mui/icons-material/Payment';
+import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
+
 
 // tabs
 function TabPanel({ children, value, index, ...other }) {
@@ -79,9 +85,8 @@ const Form = () => {
         setValue(newValue);
     };
 
-   
-
     return (
+        <Motion>
         <Container maxWidth="md" sx={{background:"#ffff",p:"0px !important",borderRadius:"9px"}}>
         
             
@@ -96,6 +101,7 @@ const Form = () => {
                                     variant="scrollable"
                                     sx={{
                                         background:"#ed1d24",
+                                        color:"#FFFF",
                                         borderRadius:"10px",
                                         '& .MuiTabs-flexContainer': {
                                             borderBottom: 'none'
@@ -111,6 +117,7 @@ const Form = () => {
                                             alignItems: 'flex-start',
                                             textAlign: 'left',
                                             justifyContent: 'flex-start',
+                                            color:"#FFFF",
                                             // borderRadius: `${borderRadius}px`
                                         },
                                         '& button.Mui-selected': {
@@ -228,7 +235,7 @@ const Form = () => {
                                 <Grid>
                                 <Typography variant='h5' sx={{p:3,boxShadow:2}} >Payments</Typography>
                                 </Grid>
-                                <Grid sx={{p:4}}>
+                                <Grid sx={{p:4,}}>
                                 <Typography sx={{pb:1}} >Summary</Typography>
                                 <Grid sx={{border:"1px solid #babfc3",borderRadius:"11px",p:1.5}}>
                                 <Grid sx={{p:1,border:"1px solid #babfc3",borderRadius:"11px",}}>
@@ -244,18 +251,43 @@ const Form = () => {
 
                                 
                                 </Grid>
-                                <Grid container spacing={2} sx={{pt:2}}>
+                                <Grid container spacing={2} sx={{p:2}}>
                                 <Grid item xs={10} >
                                <Typography sx={{pl:0.5}} > Subtotal:</Typography>
                                 </Grid>
-                                <Grid item xs={2}>
+                                <Grid item xs={2} >
                                  $300.00
                                 </Grid>
-                                
-                                </Grid>
-                                </Grid>
+                                 </Grid>
+                                 <Divider sx={{borderBottom:"1px dashed #ced1d4"}}/>
                                
+                                <Grid container spacing={2} sx={{p:2,}}>
+                                <Grid item xs={2} >
+                               <Typography >Coupon:</Typography>
                                 </Grid>
+                                <Grid item xs={8} >
+                                <Input
+                                startDecorator={<AccountBalanceWalletIcon />}
+                                size="sm" placeholder="Type in here…" />
+                                </Grid>
+                                <Grid item xs={2} >
+                                <Button  sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="xs">
+                                Back
+                            </Button>
+                                </Grid>
+                                 </Grid>
+                                 <Grid container spacing={2} sx={{px:1}}>
+                                 <Grid item xs={10} >
+                                <Typography sx={{pl:0.5}} > Total Amount:</Typography>
+                                 </Grid>
+                                 <Grid item xs={2} >
+                                 <Typography>$300.00</Typography> 
+                                 </Grid>
+                                  </Grid>
+
+                                </Grid>
+                                </Grid>
+                                <Typography sx={{textAlign:'center',color:"#ced1d4"}}>You will be redirected to the payment checkout.</Typography>
                                 </TabPanel>
                             </Grid>
                         </Grid>
@@ -266,7 +298,7 @@ const Form = () => {
                             <Grid item>
                                 {value > 0 && (
                                     // <AnimateButton>
-                                        <Button variant="outlined" size="large" onClick={(e) => handleChange(e, value - 1)}>
+                                        <Button sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="large" onClick={(e) => handleChange(e, value - 1)}>
                                             Back
                                         </Button>
                                     // </AnimateButton>
@@ -275,14 +307,14 @@ const Form = () => {
                             <Grid item>
                                 {value < 3 && (
                                     // <AnimateButton>
-                                        <Button variant="contained" size="large" onClick={(e) => handleChange(e, 1 + value)}>
+                                        <Button sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="large" onClick={(e) => handleChange(e, 1 + value)}>
                                             Continue
                                         </Button>
                                     // </AnimateButton>
                                 )}
                                 {value > 2 && (
                                     // <AnimateButton>
-                                        <Button variant="contained" size="large" >
+                                        <Button sx={{background:"red",color:"white",':hover': { background: 'white',color:"red",border:"1px solid red" }}} size="large" >
                                             save
                                         </Button>
                                     // </AnimateButton>
@@ -295,6 +327,7 @@ const Form = () => {
             
        
         </Container>
+        </Motion>
     );
 };
 
