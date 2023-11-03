@@ -1,29 +1,32 @@
+import Footer from "../../components/footer/Footer";
+import SubSlider from "../../components/SubSlider/SubSlider";
+import Navbar from "../../components/navbar/Navbar";
+import ContactImg from "../../../assets/images/contact/Contact-header.jpg";
 
+import navLogo from "../../../assets/images/logos/navLogoBlack.png";
+import ImgSection from "./ImgSection";
+import { Grid } from "@mui/material";
+import FormSection from "./FormSection";
+import MapSection from "./MapSection";
 
-import Footer from '../../components/footer/Footer'
-import MediaSlider from '../Media/components/slider/MediaSlider'
-import Navbar from '../../components/navbar/Navbar'
-import Reservation from '../../../assets/images/reservation/reservation.jpg'
-import BookRreservation from './BookReservation'
-import { Container, Grid } from '@mui/material'
-import Form from './Form'
+const Contact = () => {
+  return (
+    <Grid>
+      <Navbar logo={navLogo} bgColor={"#f0edea"} textColor={"#111010"} />
+      <SubSlider img={ContactImg} name="Contact" />
+      <Grid sx={{background:"#f0edea"}}>
+        <ImgSection  />
+      </Grid>
 
-const Rreservation = () => {
-    return (
-        <div>
-        <Navbar/>
-          <MediaSlider img={Reservation} name='Reservation' />
-          <Grid  sx={{background:"#f0edea"}}>
-          <BookRreservation/>
-          </Grid>
-          <Grid  sx={{background:"#f0edea"}}>
-          <Form/>
-         </Grid>
+     <Grid  sx={{background:"#20232e",pt:5}}>
+        <FormSection/>
+    </Grid>
+     <Grid  sx={{background:"#FFFF",pt:5}}>
+        <MapSection/>
+    </Grid>
+      <Footer />
+    </Grid>
+  );
+};
 
-          
-            <Footer/>
-        </div>
-    )
-}
-
-export default Rreservation
+export default Contact;

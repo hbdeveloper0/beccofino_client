@@ -7,6 +7,8 @@ import Media from './views/pages/media'
 import Rreservation from './views/pages/reservation';
 import Event from './views/pages/eventPage'
 import Menu from './views/pages/Menu';
+import Contact from './views/pages/contact';
+import Checkout from './views/pages/reservation/checkout';
 
 import ModelState from './context/ModelState';
 
@@ -20,6 +22,8 @@ function App() {
       <Route path="/reservation" element={<Rreservation/>} />
       <Route path="/events" element={<Event/>} />
       <Route path="/menu" element={<Menu/>} />
+      <Route path="/contact" element={<Contact/>} />
+      <Route path="/checkout" element={<Checkout/>} />
     </Routes>
     </ModelState>
   );
