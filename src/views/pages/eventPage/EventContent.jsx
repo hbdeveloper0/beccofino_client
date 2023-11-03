@@ -4,8 +4,13 @@ import bgImg from '../../../assets/images/eventPage/enevtContentBg.jpg'
 import SearchIcon from '@mui/icons-material/Search';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import EventImg from '../../../assets/images/eventPage/eventSmallImg.jpg'
+import { useState } from 'react';
+import Modals from './EventModel';
 
 const EventContent = () => {
+    const [open, setOpen] = useState(false);
+    
+    const handleModalClose = () => setOpen(false);
     return (
         <div>
             <Grid container sx={{ backgroundImage: `url(${bgImg})`, height: 'auto' }}>
@@ -56,12 +61,22 @@ const EventContent = () => {
                             </Grid>
 
                             <Grid item xs={2}>
-                                <Button sx={{ backgroundColor: '#ed1d24', color: '#FFFFFF', textTransform: 'none', padding: '2px 15px 2px 15px', borderRadius: '5px', mt: 4, float: 'right' }}>Read more</Button>
+                                <Button onClick={()=>setOpen(true)} sx={{ backgroundColor: '#ed1d24', color: '#FFFFFF', textTransform: 'none', padding: '2px 15px 2px 15px', borderRadius: '5px', mt: 4, float: 'right' }}>Read more</Button>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Container>
             </Grid>
+            
+            <Modals
+            open={open}
+            handleClose={handleModalClose}
+            title={<h3>SuccessFull</h3>}
+            description="Record Updated Successfully"
+            btnName="Ok"
+            url={handleModalClose}
+            img={EventImg}
+        />
         </div>
     )
 }
