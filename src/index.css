@@ -76,4 +76,6 @@ code {
 .active {
   background-color: #fa2020;
 }
- 
+ .react-calendar{
+  width:100% !important;
+ }

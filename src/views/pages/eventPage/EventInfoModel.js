@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import { Grid, TextField } from '@mui/material';
 import PhoneInput from "react-phone-input-2";
+import AboutEventModel from './AboutEventModel';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -22,6 +23,15 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function EventInfoModel({dialog,closeDialog}) {
   
+    const [info, setInfo] = React.useState(false);
+
+    const handleOpenInfo = () => {
+        setInfo(true);
+    };
+
+    const handleCloseInfo = () => {
+        setInfo(false);
+    };
 
   return (
     <React.Fragment>
@@ -151,10 +161,11 @@ export default function EventInfoModel({dialog,closeDialog}) {
             textTransform: "none",
             px: 3,
           }} 
-          onClick={closeDialog}>
+          onClick={handleOpenInfo}>
            Continue
           </Button>
         </DialogActions>
+        <AboutEventModel info={info} handleCloseInfo={handleCloseInfo} />
       </BootstrapDialog>
     </React.Fragment>
   );
