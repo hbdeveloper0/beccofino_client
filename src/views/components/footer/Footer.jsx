@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import ModelContext from '../../../context/ModelContext';
 import { Grid, Container, Box, Typography, Link, Button } from '@mui/material'
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
@@ -6,8 +7,16 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import GoogleIcon from '@mui/icons-material/Google';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 
+import SignUpModel from './../models/SignUpModel';
+
 const Footer2 = () => {
+    const a = useContext(ModelContext)
+    const handleOpenModel = () => a.setModelOpen(true);
+    
+    
     return (
+        <>
+     
         <Grid container >
             <Grid item xs={12} sx={{backgroundColor: '#111010', height: '100%'}}>
                 <Container>
@@ -39,7 +48,7 @@ const Footer2 = () => {
                                 <Typography variant='h5' sx={{ fontFamily: "Marcellus Sans-serif", color: '#111010', fontSize: '32px'}}>Newsletter</Typography>
                                 <Typography sx={{ color: '#111010', fontFamily: "Montserrat Sans-serif", mt:2 }}>Interested in hearing the latest and greatest <br/> from Beccofino?</Typography>
                                 <Box sx={{ marginTop: '10px' }}>
-                                    <Link sx={{ color: '#111010', fontSize: '14px', fontFamily: "Montserrat  Sans-serif", fontWeight: '600'}} variant='text'>Sign up</Link>
+                                    <Link className='lastBtn' sx={{ color: '#111010', fontSize: '14px', fontFamily: "Montserrat  Sans-serif", fontWeight: '600', cursor: 'pointer'}} onClick={()=> handleOpenModel()} variant='text'><a>Sign up</a></Link>
                                 </Box>
                             </Grid>
 
@@ -87,6 +96,9 @@ const Footer2 = () => {
             </Grid>
 
         </Grid>
+
+        <SignUpModel />
+        </>
     )
 }
 

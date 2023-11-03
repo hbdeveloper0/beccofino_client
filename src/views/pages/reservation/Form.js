@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import Input from '@mui/joy/Input';
@@ -17,6 +17,8 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import PaymentIcon from '@mui/icons-material/Payment';
 import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
+
+import axios from 'axios';
 
 
 // tabs
@@ -77,6 +79,23 @@ const top100Films = [
 // ==============================|| PROFILE 2 ||============================== //
 
 const Form = () => {
+    let array;
+    const [first, setFirst] = useState();
+    useEffect(() =>{
+        axios.get(`${process.env.REACT_APP_API_URL}/reservation/category-selection`).then((response) =>{
+            console.log(response.data.data.categories)
+            setFirst(response.data.data.categories);
+        }).catch ((error) => {
+            if (error.response) {
+              // The request was made and the server responded with a status code
+              console.log('Response data:', error.response);
+            } else {
+              // Something happened in setting up the request
+              console.error('Error:', error.message);
+            }
+        })
+    },[])
+
     const theme = useTheme();
     // const { borderRadius } = useConfig();
     const [value, setValue] = React.useState(0);
@@ -183,11 +202,11 @@ const Form = () => {
                                  <Typography sx={{pb:1}} ><span style={{color:"red"}}>*</span>Menu:</Typography>
                                 <Autocomplete
                                     disablePortal
-                                    options={top100Films}
+                                    options={first}
                                     // defaultValue={top100Films[5]}
                                     renderInput={(params) => <TextField {...params} label="Select Menu" />}
                                 />
-                            
+                            {/* {console.log(first)} */}
                                  </Grid>
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -7,9 +8,12 @@ import Rreservation from './views/pages/reservation';
 import Event from './views/pages/eventPage'
 import Menu from './views/pages/Menu';
 
+import ModelState from './context/ModelState';
+
 
 function App() {
   return (
+    <ModelState>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/media" element={<Media />} />
@@ -17,6 +21,7 @@ function App() {
       <Route path="/events" element={<Event/>} />
       <Route path="/menu" element={<Menu/>} />
     </Routes>
+    </ModelState>
   );
 }
 

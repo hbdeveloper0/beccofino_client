@@ -10,7 +10,7 @@ import GlobelButton from '../../../../components/GlobalButton/GlobelButton'
 
 const Content5 = () => {
     return (
-        <div className='container-fluid mt-5'>
+        <div className='container-fluid mt-5 mb-5'>
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-12'>
