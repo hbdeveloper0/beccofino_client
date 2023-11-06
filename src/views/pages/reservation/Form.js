@@ -33,7 +33,6 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import PersonOutlineTwoToneIcon from "@mui/icons-material/PersonOutlineTwoTone";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { useState } from "react";
 import MyApp from "./Calender";
 
 import axios from 'axios'
@@ -97,9 +96,24 @@ const top100Films = [
 // ==============================|| PROFILE 2 ||============================== //
 const Form = () => {
     const [first, setFirst] = useState();
+  
+    const [category, setCategory] = useState();
+
+    const handleCategoryChange = (event, newValue) => {
+      if (newValue) {
+        setCategory(newValue);
+        const categoryId = newValue.id;
+        axios.post(`${process.env.REACT_APP_API_URL}/reservation/get-category`, {categoryId}).then((categoryResponsive) => {
+          console.log(categoryResponsive)
+        })
+      } else {
+        // Handle the case when the user clears the selection (if needed)
+        setCategory('');
+      }
+    };
     useEffect(() =>{
         axios.get(`${process.env.REACT_APP_API_URL}/reservation/category-selection`).then((response) =>{
-            console.log(response)
+            console.log(response.data.data.categories)
             setFirst(response.data.data.categories);
         }).catch ((error) => {
             if (error.response) {
@@ -254,10 +268,13 @@ const Form = () => {
                     disablePortal
                     options={first}
                     // defaultValue={top100Films[5]}
+                    value={category} onChange={handleCategoryChange}
                     renderInput={(params) => (
-                      <TextField {...params} label="Select Menu" />
+                      <TextField {...params} label="Select Menu"  />
                     )}
+                    
                   />
+           
                 </Grid>
                 <Grid sx={{p:6}}>
                 <Grid sx={{ p: 1.5 ,border: "1px solid #babfc3",borderRadius:2}}>
@@ -317,6 +334,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                       
+                        
                       />
                     </Grid>
                     <Grid item xs={6}>
