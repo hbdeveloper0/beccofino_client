@@ -3,8 +3,13 @@ import React, {useState, useEffect} from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "@mui/joy/Input";
-import { useNavigate } from "react-router-dom";
+
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import Tooltip from "@mui/material/Tooltip";
+
 import Motion from "../../components/Motion";
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -16,6 +21,7 @@ import {
   Container,
   Divider,
   Grid,
+  IconButton,
   Tab,
   Tabs,
   TextField,
@@ -26,8 +32,9 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import PersonOutlineTwoToneIcon from "@mui/icons-material/PersonOutlineTwoTone";
 import PaymentIcon from "@mui/icons-material/Payment";
-import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
-import Calender from "./Calender";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { useState } from "react";
+import MyApp from "./Calender";
 
 import axios from 'axios'
 // tabs
@@ -110,7 +117,18 @@ const Form = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const navigate = useNavigate();
+  const [count, setCount] = useState(1);
+  const IncNum = () => {
+    setCount(count + 2);
+  };
+  const DecNum = () => {
+    if (count > 0) setCount(count - 2);
+    else {
+      setCount(0);
+      alert("min limit reached");
+    }
+  };
+
   return (
     <Motion>
       <Container
@@ -241,9 +259,47 @@ const Form = () => {
                     )}
                   />
                 </Grid>
+                <Grid sx={{p:6}}>
+                <Grid sx={{ p: 1.5 ,border: "1px solid #babfc3",borderRadius:2}}>
+                <Typography sx={{fontSize:"17px",pb:2}}>Bringing anyone with you?</Typography>
+                  <Grid
+                    sx={{
+                      p: 1,
+                      border: "1px solid #babfc3",
+                      borderRadius: "11px",
+                    }}
+                  >
+                    <Grid container spacing={2} sx={{p:1}}>
+                      <Grid item xs={8.5} sx={{ display:'flex',mt:1,}}>
+                        <PersonAddIcon  />
+                        <Typography sx={{pl:1}}>Additional People</Typography>
+                      </Grid>
+                      <Grid item xs={3.5}>
+                        <Grid
+                          sx={{
+                            display: "flex",
+                            border: "1px solid #babfc3",
+                            borderRadius: "7px",
+                          }}
+                        >
+                         
+                          <IconButton onClick={DecNum} sx={{ pl: 2 }} disabled={count === 1}>
+                          <RemoveIcon size="small" />
+                        </IconButton>
+                          <Typography sx={{ p: 1 }}>{count}</Typography>
+                          <IconButton onClick={IncNum} sx={{ pr: 2 }} disabled={count === 9}>
+                          <AddIcon />
+                        </IconButton>
+                         
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Typography sx={{pt:1,color:" #babfc3"}}>How many in your party?</Typography>
+                </Grid></Grid>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <Calender />
+                <MyApp/>
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <Grid>
@@ -377,7 +433,7 @@ const Form = () => {
                           }}
                           size="xs"
                         >
-                          Add
+                          Back
                         </Button>
                       </Grid>
                     </Grid>
@@ -445,7 +501,6 @@ const Form = () => {
               {value > 2 && (
                 // <AnimateButton>
                 <Button
-                  onClick={() => navigate("/checkout")}
                   sx={{
                     background: "red",
                     color: "white",
