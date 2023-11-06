@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "@mui/joy/Input";
@@ -28,6 +28,8 @@ import PersonOutlineTwoToneIcon from "@mui/icons-material/PersonOutlineTwoTone";
 import PaymentIcon from "@mui/icons-material/Payment";
 import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
 import Calender from "./Calender";
+
+import axios from 'axios'
 // tabs
 function TabPanel({ children, value, index, ...other }) {
   return (
@@ -87,6 +89,21 @@ const top100Films = [
 ];
 // ==============================|| PROFILE 2 ||============================== //
 const Form = () => {
+    const [first, setFirst] = useState();
+    useEffect(() =>{
+        axios.get(`${process.env.REACT_APP_API_URL}/reservation/category-selection`).then((response) =>{
+            console.log(response)
+            setFirst(response.data.data.categories);
+        }).catch ((error) => {
+            if (error.response) {
+              // The request was made and the server responded with a status code
+              console.log('Response data:', error.response);
+            } else {
+              // Something happened in setting up the request
+              console.error('Error:', error.message);
+            }
+        })
+    },[])
   const theme = useTheme();
   // const { borderRadius } = useConfig();
   const [value, setValue] = React.useState(0);
@@ -217,7 +234,7 @@ const Form = () => {
                   </Typography>
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
+                    options={first}
                     // defaultValue={top100Films[5]}
                     renderInput={(params) => (
                       <TextField {...params} label="Select Menu" />

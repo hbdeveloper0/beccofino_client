@@ -13,20 +13,33 @@ import {
 
 
 import InboxIcon from "@mui/icons-material/Inbox";
-import contentImg1 from "../../../../assets/images/menuPage/contentImg3.jpg";
+import contentImg1 from "../../../../assets/images/menuPage/dinner/contentImg3.jpg";
 
-const leftSeafoodtems = [
-  "Bresaola",
-  "Smoking Ham",
-  "Sealame",
-  "Tuna in a jar",
+const leftItems = [
+  "Strozzapreti Burro & Salvia",
+  "Gnocchi alla Sorrentina",
+  "Crespelle alla Fiorentina",
+  "Tagliolini al nero di seppia",
 ];
-const rightSeafoodItems = [
-  "Bottarga",
-  "Cured Salmon",
-  "Smoked Trout",
+const leftLists = [
+  "Ricotta & Spinach dumplings in a butter-sage sauce and shaved pecorino",
+  "Potato dumplings in tomato sauce and basil, mozzarella",
+  "Florentine crepes ricotta and spinach filled with pink buttermilk sauce",
+  "Egg tagliolini with black ink tossed with cuttle fish, leek, cherry tomato, Wine sauce",
 ];
-const Seafood = () => {
+const rightItems = [
+  "Tortelli del Mugello",
+  "Trofie al Pesto",
+  "Agnolotti alla Boscaiola",
+  "Risotto ai Funghi",
+];
+const rightLists = [
+  "Homemade stuffed ravioli with savory Venison/wild boar Tuscan ragu",
+  "Fresh pasta tossed in freshly handmade traditional pesto",
+  "Homemade cheese stuffed pasta tossed in rosemary ham, mushrooms, peas and roasted pine nuts creamy sauce",
+  "Wild truffled mushrooms medley risotto, mantecato with parmigiana cheese",
+];
+const Homemades = () => {
     return (
         <div>
           <Grid container spacing={4} sx={{ pt: "80px" , pb: '80px'}}>
@@ -40,7 +53,7 @@ const Seafood = () => {
                   pl: 2
                 }}
               >
-              Charcutherie – Seafood
+              Homemade Pasta’s
               </Typography>
     
               <Grid container sx={{ mt: 2 }} spacing={4}>
@@ -52,7 +65,7 @@ const Seafood = () => {
                       bgcolor: "background.paper"
                     }}
                   >
-                    {leftSeafoodtems.map((leftSeafoodtem) => (
+                    {leftItems.map((leftItem, index) => (
                       <>
                         <nav aria-label="main mailbox folders">
                           <List sx={{ backgroundColor: '#f0edea' }}>
@@ -61,16 +74,17 @@ const Seafood = () => {
                                 <ListItemIcon>
                                   <InboxIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={leftSeafoodtem} />
+                                <ListItemText primary={leftItem} />
                               </ListItemButton>
                             </ListItem>
                           </List>
+                          <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{leftLists[index]}</Typography>
                         </nav>
                         <Divider />
                       </>
                     ))}
                   </Box>
-                  <Typography sx={{ mt:3 }}>Availability changes due to aging/season requirements</Typography>
+                  
                 </Grid>
     
                 <Grid item xs={6}>
@@ -81,7 +95,7 @@ const Seafood = () => {
                       bgcolor: "background.paper"
                     }}
                   >
-                    {rightSeafoodItems.map((rightSeafoodItem) => (
+                    {rightItems.map((rightItem, index) => (
                       <>
                         <nav aria-label="main mailbox folders">
                           <List sx={{ backgroundColor: '#f0edea' }}>
@@ -90,10 +104,11 @@ const Seafood = () => {
                                 <ListItemIcon>
                                   <InboxIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={rightSeafoodItem} />
+                                <ListItemText primary={rightItem} />
                               </ListItemButton>
                             </ListItem>
                           </List>
+                          <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{rightLists[index]}</Typography>
                         </nav>
                         <Divider />
                       </>
@@ -115,4 +130,4 @@ const Seafood = () => {
       );
 }
 
-export default Seafood
+export default Homemades

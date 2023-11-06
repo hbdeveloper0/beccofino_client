@@ -12,12 +12,38 @@ import {
 } from "@mui/material";
 
 import InboxIcon from "@mui/icons-material/Inbox";
-import contentImg2 from '../../../../assets/images/menuPage/contentImg2.jpg'
+import contentImg2 from '../../../../assets/images/menuPage/dinner/contentImg4.jpg'
 
-const leftAffettatiItems = ['Bresaola', 'Capicollo', 'Sopressata', 'Cotto'];
-const rightAffettatiItems = ['Pancetta', 'Duck Prosciutto', '‘Nduja', 'Tagliere'];
+const leftItems = [
+  'Caciucco alla livornese​', 
+  'Parmigiana di Spada​', 
+  'Pesca del Giorno​',
+  'Merluzzo Acqua pazza​',
+  'Peposo del Casentino'
+];
+const leftLists = [
+  'Shrimp, clam, calamari, mussels and more..in a tangy tomato garlic sauce and white wine over toasted bread​', 
+  'Swordfish parmigiana, eggplant with Sicilian pesto and sweet provola chees​', 
+  'Daily catch​',
+  'Cod sicilian style with garlic, cherry tomatoes , scallion, celery, oregano and white w..',
+  'Ancient Tuscan beef slowly braised in Chianti wine, mixed peppercorns with beans bruschetta'
+];
+const rightItems = [
+  'Coniglio in Umido​', 
+  'Filetto al Pepe Verde*​', 
+  'Fiorentina ai Carboni', 
+  'Anatra al Sottobosco​',
+  'Ol’ fashion beef Tartare *'
+];
+const rightLists = [
+  'Cacciatora sauce with olives Over braised rabbit and polenta​', 
+  '10oz grilled filet mignon, flambeed with cognac in green peppercorn creamy sauce​', 
+  '40 oz Porterhouse make no miSteak one of the best..aged, with our secret seasoning comes with grilled accouterments ask your server', 
+  'Pan seared duck breast with our savory herbs blueberry gravy​',
+  '10 oz of freshly grounded tenderloin with all quintessence, egg yolk olive oil, lemon, capers, Anchovies, shallots …with toasted bread'
+];
 
-const Affettati = () => {
+const Mains = () => {
     return (
         <div>
             <Grid container spacing={4} sx={{ pt: '80px', pb: '80px' }}>
@@ -38,7 +64,7 @@ const Affettati = () => {
               pl: 2
             }}
           >
-            Charcutherie – Affettati
+          Main
           </Typography>
 
           <Grid container sx={{ mt: 2 }} spacing={4}>
@@ -51,7 +77,7 @@ const Affettati = () => {
                   bgcolor: "background.paper"
                 }}
               >
-                {leftAffettatiItems.map((leftAffettatiItem) => (
+                {leftItems.map((leftItem, index) => (
                   <>
                     <nav aria-label="main mailbox folders">
                       <List>
@@ -60,10 +86,11 @@ const Affettati = () => {
                             <ListItemIcon>
                               <InboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={leftAffettatiItem} />
+                            <ListItemText primary={leftItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
+                      <Typography sx={{color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{leftLists[index]}</Typography>
                     </nav>
                     <Divider />
                   </>
@@ -79,7 +106,7 @@ const Affettati = () => {
                   bgcolor: "background.paper"
                 }}
               >
-                {rightAffettatiItems.map((rightAffettatiItem) => (
+                {rightItems.map((rightItem, index) => (
                   <>
                     <nav aria-label="main mailbox folders">
                       <List>
@@ -88,15 +115,16 @@ const Affettati = () => {
                             <ListItemIcon>
                               <InboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={rightAffettatiItem} />
+                            <ListItemText primary={rightItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
+                      <Typography sx={{color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{rightLists[index]}</Typography>
                     </nav>
                     <Divider />
                   </>
                 ))}
-                <Typography sx={{ mt:3 }}>4 cheeses, charcuterie, bruschettas n more</Typography>
+    
               </Box>
             </Grid>
           </Grid>
@@ -108,4 +136,4 @@ const Affettati = () => {
     )
 }
 
-export default Affettati
+export default Mains

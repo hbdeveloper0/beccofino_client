@@ -13,20 +13,25 @@ import {
 
 
 import InboxIcon from "@mui/icons-material/Inbox";
-import contentImg1 from "../../../../assets/images/menuPage/contentImg3.jpg";
+import contentImg1 from "../../../../assets/images/menuPage/dinner/contentImg5.jpg";
 
-const leftSeafoodtems = [
-  "Bresaola",
-  "Smoking Ham",
-  "Sealame",
-  "Tuna in a jar",
+const leftItems = [
+  "Cannellini al fiasco",
+  "Michelangelo salad​",
 ];
-const rightSeafoodItems = [
-  "Bottarga",
-  "Cured Salmon",
-  "Smoked Trout",
+const leftLists = [
+  "Cannellini beans sautéed with garlic clove and fresh sage in raw olive oil",
+  "Spring mix with pine nuts and shaved parmigiano",
 ];
-const Seafood = () => {
+const rightItems = [
+  "Caponatina in Agrodolce​",
+  "Brunelleschi salad",
+];
+const rightLists = [
+  "Diced eggplant, celery, olives, capers, onions and bell peppers in bittersweet tomato sauce",
+  "Spinach salad with shaved almond and blue cheese",
+];
+const Sides = () => {
     return (
         <div>
           <Grid container spacing={4} sx={{ pt: "80px" , pb: '80px'}}>
@@ -40,7 +45,7 @@ const Seafood = () => {
                   pl: 2
                 }}
               >
-              Charcutherie – Seafood
+              Homemade Pasta’s
               </Typography>
     
               <Grid container sx={{ mt: 2 }} spacing={4}>
@@ -52,7 +57,7 @@ const Seafood = () => {
                       bgcolor: "background.paper"
                     }}
                   >
-                    {leftSeafoodtems.map((leftSeafoodtem) => (
+                    {leftItems.map((leftItem, index) => (
                       <>
                         <nav aria-label="main mailbox folders">
                           <List sx={{ backgroundColor: '#f0edea' }}>
@@ -61,16 +66,17 @@ const Seafood = () => {
                                 <ListItemIcon>
                                   <InboxIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={leftSeafoodtem} />
+                                <ListItemText primary={leftItem} />
                               </ListItemButton>
                             </ListItem>
                           </List>
+                          <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{leftLists[index]}</Typography>
                         </nav>
                         <Divider />
                       </>
                     ))}
                   </Box>
-                  <Typography sx={{ mt:3 }}>Availability changes due to aging/season requirements</Typography>
+                  
                 </Grid>
     
                 <Grid item xs={6}>
@@ -81,7 +87,7 @@ const Seafood = () => {
                       bgcolor: "background.paper"
                     }}
                   >
-                    {rightSeafoodItems.map((rightSeafoodItem) => (
+                    {rightItems.map((rightItem, index) => (
                       <>
                         <nav aria-label="main mailbox folders">
                           <List sx={{ backgroundColor: '#f0edea' }}>
@@ -90,10 +96,11 @@ const Seafood = () => {
                                 <ListItemIcon>
                                   <InboxIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={rightSeafoodItem} />
+                                <ListItemText primary={rightItem} />
                               </ListItemButton>
                             </ListItem>
                           </List>
+                          <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{rightLists[index]}</Typography>
                         </nav>
                         <Divider />
                       </>
@@ -115,4 +122,4 @@ const Seafood = () => {
       );
 }
 
-export default Seafood
+export default Sides

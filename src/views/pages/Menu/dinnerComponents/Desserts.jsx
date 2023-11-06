@@ -12,12 +12,20 @@ import {
 } from "@mui/material";
 
 import InboxIcon from "@mui/icons-material/Inbox";
-import contentImg2 from '../../../../assets/images/menuPage/contentImg2.jpg'
+import contentImg2 from '../../../../assets/images/menuPage/dinner/contentImg6.jpg'
 
-const leftAffettatiItems = ['Bresaola', 'Capicollo', 'Sopressata', 'Cotto'];
-const rightAffettatiItems = ['Pancetta', 'Duck Prosciutto', '‘Nduja', 'Tagliere'];
+const leftItems = [
+  'Sicilian Cannoli​', 
+  'Panna Cotta​', 
+  'Burrata​',
+];
 
-const Affettati = () => {
+const rightItems = [
+  'Ricotta & Honey​', 
+  'Ricotta Mouse​', 
+];
+
+const Desserts = () => {
     return (
         <div>
             <Grid container spacing={4} sx={{ pt: '80px', pb: '80px' }}>
@@ -38,7 +46,7 @@ const Affettati = () => {
               pl: 2
             }}
           >
-            Charcutherie – Affettati
+          Main
           </Typography>
 
           <Grid container sx={{ mt: 2 }} spacing={4}>
@@ -51,7 +59,7 @@ const Affettati = () => {
                   bgcolor: "background.paper"
                 }}
               >
-                {leftAffettatiItems.map((leftAffettatiItem) => (
+                {leftItems.map((leftItem, index) => (
                   <>
                     <nav aria-label="main mailbox folders">
                       <List>
@@ -60,10 +68,11 @@ const Affettati = () => {
                             <ListItemIcon>
                               <InboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={leftAffettatiItem} />
+                            <ListItemText primary={leftItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
+                    
                     </nav>
                     <Divider />
                   </>
@@ -79,7 +88,7 @@ const Affettati = () => {
                   bgcolor: "background.paper"
                 }}
               >
-                {rightAffettatiItems.map((rightAffettatiItem) => (
+                {rightItems.map((rightItem, index) => (
                   <>
                     <nav aria-label="main mailbox folders">
                       <List>
@@ -88,15 +97,16 @@ const Affettati = () => {
                             <ListItemIcon>
                               <InboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={rightAffettatiItem} />
+                            <ListItemText primary={rightItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
+                     
                     </nav>
                     <Divider />
                   </>
                 ))}
-                <Typography sx={{ mt:3 }}>4 cheeses, charcuterie, bruschettas n more</Typography>
+    
               </Box>
             </Grid>
           </Grid>
@@ -108,4 +118,4 @@ const Affettati = () => {
     )
 }
 
-export default Affettati
+export default Desserts
