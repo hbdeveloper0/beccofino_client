@@ -1,53 +1,59 @@
 import React from 'react'
 import './Slider.css'
 
+import Grid from 'antd/es/card/Grid'
+import sliderImg1 from '../../../../../assets/images/homePage/sliderImages/slider-img1-marquee-figure.jpg'
+import sliderImg2 from '../../../../../assets/images/homePage/sliderImages/slider-img2-grill-pesce.jpg'
+import sliderImg3 from '../../../../../assets/images/homePage/sliderImages/slider-img3-marquee-figure.jpg'
+
+
 const Slider = () => {
     return (
-        <div className='container-fluid p-0'>
-            <div id="carousel1ExampleControls" className="carousel slide"  data-ride="carousel">
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <div className='sliderBgImg1'>
-                            <div className='slider-bg-color'>
-                                <div className='container'>
-                                    <div className='row'>
-                                        <div className='col-lg-12'>
+        <Grid container>
+            <Grid id="carousel1ExampleControls" className="carousel slide"  data-ride="carousel">
+                <Grid className="carousel-inner">
+                    <Grid className="carousel-item active">
+                        <Grid className='sliderBgImg1'>
+                            <Grid className='slider-bg-color'>
+                                <Grid className='container'>
+                                    <Grid className='row'>
+                                        <Grid className='col-lg-12'>
                                             <h1 className='main-slider-txt'>A Bite Away .....<br/> From Italy</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
 
-                    <div className="carousel-item">
-                        <div className='sliderBgImg2'>
-                            <div className='slider-bg-color'>
-                                <div className='container'>
-                                    <div className='row'>
-                                        <div className='col-lg-12'>
+                    <Grid className="carousel-item">
+                        <Grid className='sliderBgImg2'>
+                            <Grid className='slider-bg-color'>
+                                <Grid className='container'>
+                                    <Grid className='row'>
+                                        <Grid className='col-lg-12'>
                                             <h1 className='main-slider-txt'>A Bite Away .....<br/> From Italy</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
 
-                    <div className="carousel-item">
-                        <div className='sliderBgImg3'>
-                            <div className='slider-bg-color'>
-                                <div className='container'>
-                                    <div className='row'>
-                                        <div className='col-lg-12'>
+                    <Grid className="carousel-item">
+                        <Grid className='sliderBgImg3'>
+                            <Grid className='slider-bg-color'>
+                                <Grid className='container'>
+                                    <Grid className='row'>
+                                        <Grid className='col-lg-12'>
                                             <h1 className='main-slider-txt'>A Bite Away .....<br/> From Italy</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
                 <a className="carousel-control-prev" href="#carousel1ExampleControls" role="button" data-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="sr-only">Previous</span>
@@ -56,8 +62,8 @@ const Slider = () => {
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="sr-only">Next</span>
                 </a>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

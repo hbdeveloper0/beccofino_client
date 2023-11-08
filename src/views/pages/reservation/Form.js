@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "@mui/joy/Input";
@@ -36,6 +36,8 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import MyApp from "./Calender";
 
 import axios from 'axios'
+
+import ModelContext from "../../../context/ModelContext";
 // tabs
 function TabPanel({ children, value, index, ...other }) {
   return (
@@ -62,28 +64,8 @@ function a11yProps(index) {
   };
 }
 // tabs option
-const tabsOption = [
-  {
-    label: "Menu Selection",
-    icon: <CheckCircleIcon />,
-    caption: "Menu Selection",
-  },
-  {
-    label: "Date & Time",
-    icon: <EventNoteIcon />,
-    caption: "Date & Time",
-  },
-  {
-    label: "Your Information",
-    icon: <PersonOutlineTwoToneIcon />,
-    caption: "Your Information",
-  },
-  {
-    label: "Payments",
-    icon: <PaymentIcon />,
-    caption: "Payments",
-  },
-];
+
+
 const top100Films = [
   { label: "The Dark Knight", id: 1 },
   { label: "Control with Control", id: 2 },
@@ -95,36 +77,55 @@ const top100Films = [
 ];
 // ==============================|| PROFILE 2 ||============================== //
 const Form = () => {
-    const [first, setFirst] = useState();
-  
-    const [category, setCategory] = useState();
+ 
+  const [menuCaption, setmenuCaption] = useState();
+  const [first, setFirst] = useState();
+  const [category, setCategory] = useState('');
+  const a = useContext(ModelContext);
+  const [userData, setUserData] = useState({first_name:'', last_name:'', email:'', phone:'', zip_code:''});
 
-    const handleCategoryChange = (event, newValue) => {
-      if (newValue) {
-        setCategory(newValue);
-        const categoryId = newValue.id;
-        axios.post(`${process.env.REACT_APP_API_URL}/reservation/get-category`, {categoryId}).then((categoryResponsive) => {
-          console.log(categoryResponsive)
-        })
+  const [showPaymentTab, setShowPaymentTab] = useState(false)
+
+  const tabsOption = [
+    {
+      label: "Menu Selection",
+      icon: <CheckCircleIcon />,
+      caption: menuCaption,
+    },
+    {
+      label: "Date & Time",
+      icon: <EventNoteIcon />,
+      caption: "Date & Time",
+    },
+    {
+      label: "Your Information",
+      icon: <PersonOutlineTwoToneIcon />,
+      caption: "Your Information",
+    },
+    (showPaymentTab) ? 
+    {
+      label: "Payments",
+      icon: <PaymentIcon />,
+      caption: "Payments",
+    } : {}
+
+  ];
+
+  useEffect(() =>{
+    axios.get(`${process.env.REACT_APP_API_URL}/reservation/category-selection`).then((response) =>{
+      console.log(response.data.data.categories)
+      setFirst(response.data.data.categories);
+    }).catch ((error) => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.log('Response data:', error.response);
       } else {
-        // Handle the case when the user clears the selection (if needed)
-        setCategory('');
+        // Something happened in setting up the request
+        console.error('Error:', error.message);
       }
-    };
-    useEffect(() =>{
-        axios.get(`${process.env.REACT_APP_API_URL}/reservation/category-selection`).then((response) =>{
-            console.log(response.data.data.categories)
-            setFirst(response.data.data.categories);
-        }).catch ((error) => {
-            if (error.response) {
-              // The request was made and the server responded with a status code
-              console.log('Response data:', error.response);
-            } else {
-              // Something happened in setting up the request
-              console.error('Error:', error.message);
-            }
-        })
-    },[])
+    })
+  },[])
+
   const theme = useTheme();
   // const { borderRadius } = useConfig();
   const [value, setValue] = React.useState(0);
@@ -142,6 +143,54 @@ const Form = () => {
       alert("min limit reached");
     }
   };
+
+
+  const handlePhoneInputChange = (value) => {
+    setUserData({...userData, phone: value});
+  }; 
+
+  const handleCategoryChange = (event, newValue) => {
+    if (newValue) {
+      setCategory(newValue.id);
+      setmenuCaption(newValue.label)
+    } else {
+      setCategory('');
+      setmenuCaption('')
+    }
+  };
+
+  useEffect(() => {
+    if(category !== ''){
+      const category_id  = category;
+      axios.post(`${process.env.REACT_APP_API_URL}/reservation/get-category`, {category_id}).then((response) =>{
+          console.log(response.data.data.category)
+          setShowPaymentTab(response.data.data.category.pre_payment)
+          }).catch ((error) => {
+              if (error.response) {
+                // The request was made and the server responded with a status code
+                console.log('Response data:', error.response);
+              } else {
+                // Something happened in setting up the request
+                console.error('Error:', error.message);
+              }
+          })
+    }
+  },[category])
+
+  const handelSaveClick = () => {
+    const apiFormData = {table_category_id: category, total_persons: count+1, reservation_date: a.currentdate, fk_time_slot_id: a.clickedButton,  ...userData, };
+      axios.post(`${process.env.REACT_APP_API_URL}/reservation/book-Reservation`, apiFormData).then((response) =>{
+      console.log(response)
+      }).catch ((error) => {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            console.log('Response data:', error.response);
+          } else {
+            // Something happened in setting up the request
+            console.error('Error:', error.message);
+          }
+      })
+  }
 
   return (
     <Motion>
@@ -264,17 +313,18 @@ const Form = () => {
                   <Typography sx={{ pb: 1 }}>
                     <span style={{ color: "red" }}>*</span>Menu:
                   </Typography>
+               
                   <Autocomplete
                     disablePortal
                     options={first}
-                    // defaultValue={top100Films[5]}
-                    value={category} onChange={handleCategoryChange}
+                    // defaultValue={first[0].id}
+                    onChange={handleCategoryChange}
                     renderInput={(params) => (
-                      <TextField {...params} label="Select Menu"  />
+                      <TextField {...params} label="Select Menu"/>
                     )}
-                    
+                   
                   />
-           
+                      
                 </Grid>
                 <Grid sx={{p:6}}>
                 <Grid sx={{ p: 1.5 ,border: "1px solid #babfc3",borderRadius:2}}>
@@ -303,7 +353,7 @@ const Form = () => {
                           <IconButton onClick={DecNum} sx={{ pl: 2 }} disabled={count === 1}>
                           <RemoveIcon size="small" />
                         </IconButton>
-                          <Typography sx={{ p: 1 }}>{count}</Typography>
+                          <Typography sx={{ p: 1 }} >{count}</Typography>
                           <IconButton onClick={IncNum} sx={{ pr: 2 }} disabled={count === 9}>
                           <AddIcon />
                         </IconButton>
@@ -334,7 +384,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
-                       
+                        name='first_name'
+                        onChange={(e)=> setUserData({...userData, first_name: e.target.value})}
                         
                       />
                     </Grid>
@@ -344,6 +395,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='last_name'
+                        onChange={(e)=> setUserData({...userData, last_name: e.target.value})}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -354,6 +407,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='email'
+                        onChange={(e)=> setUserData({...userData, email: e.target.value})}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -365,6 +420,7 @@ const Form = () => {
                           name: "phone",
                           required: true,
                         }}
+                        onChange={handlePhoneInputChange}
                         inputStyle={{ width: "100%" }}
                       />
                     </Grid>
@@ -376,6 +432,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='zip_code'
+                        onChange={(e)=> setUserData({...userData, zip_code: e.target.value})}
                       />
                     </Grid>
                   </Grid>
@@ -530,6 +588,7 @@ const Form = () => {
                     },
                   }}
                   size="large"
+                  onClick={handelSaveClick}
                 >
                   save
                 </Button>
