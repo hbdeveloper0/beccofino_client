@@ -5,7 +5,6 @@ import Footer from '../../components/footer/Footer'
 import SliderImg from '../../../assets/images/menuPage/menuSliderImg.jpg'
 import navLogo from '../../../assets/images/logos/navLogoBlack.png'
 import MenuContent from './MenuContent'
-
 const Menu = () => {
     return (
         <div>
@@ -16,5 +15,4 @@ const Menu = () => {
         </div>
     )
 }
-
 export default Menu

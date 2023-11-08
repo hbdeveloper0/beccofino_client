@@ -29,24 +29,24 @@ const FormSection = () => {
   return (
     <Container>
       <Grid container spacing={2} sx={{pb:9}}>
-        <Grid xs={6} sx={{ pt: 7 }}>
+        <Grid xs={12} sm={6} sx={{ pt: 7 }}>
           <Typography
             variant="h2"
             sx={{
               fontFamily: "Gilda Display Sans-serif",
               color: "#FFFF",
               fontWeight: "400",
-              fontSize: "50px",
-              px: 16,
+              fontSize: {xs:'35px',md:'50px'},
+              px: {xs:1,md:16},
               pb: 3,
             }}
           >
             OUR TEAM IS READY
             <label> TO HELP</label>
           </Typography>
-          <Divider sx={{ background: "#FFFF", width: "90px", ml: 16 }} />
+          <Divider sx={{ background: "#FFFF", width: "90px", ml: {xs:1,md:16} }} />
 
-          <Grid sx={{ pl: 16, pt: 5 }}>
+          <Grid sx={{ pl: {xs:1,md:16}, pt: 5 }}>
             <Typography sx={{ color, fontSize: "20px", fontWeight: "700" }}>
               Reception:
             </Typography>
@@ -122,7 +122,8 @@ const FormSection = () => {
             </Link>
           </Grid>
         </Grid>
-        <Grid xs={6} sx={{ px: 9, pt: 7 }}>
+        <Grid xs={12} sm={6} sx={{ px: {xs:1,md:9}, pt: 7 }}>
+        <form>
           <TextField
             fullWidth
             id="outlined-name"
@@ -200,6 +201,7 @@ const FormSection = () => {
           <Grid sx={{display:"flex",justifyContent:"end",pt:1}}>
           <Button sx={{background:"red",color:"#FFFF",px:3,py:1,borderRadius:9,}}>Submit</Button>
           </Grid>
+          </form>
         </Grid>
       </Grid>
     </Container>

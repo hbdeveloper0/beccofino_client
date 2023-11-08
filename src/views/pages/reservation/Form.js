@@ -244,7 +244,7 @@ const Form = () => {
                   <Autocomplete
                     disablePortal
                     options={top100Films}
-                    // defaultValue={top100Films[5]}
+                    defaultValue={top100Films[3]}
                     renderInput={(params) => (
                       <TextField {...params} label="Select Menu" />
                     )}

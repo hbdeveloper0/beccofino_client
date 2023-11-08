@@ -57,9 +57,9 @@ export default function EventInfoModel({dialog,closeDialog}) {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-        <Grid sx={{ p: 3 }}>
+        <Grid sx={{ p: {xs:0,sm:3} }}>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>
               <span style={{ color: "red" }}>*</span>First Name:
             </Typography>
@@ -69,7 +69,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               placeholder="First Name"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>Last Name:</Typography>
             <TextField
               fullWidth
@@ -77,7 +77,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               placeholder="Last Name"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>
               <span style={{ color: "red" }}>*</span>Email:
             </Typography>
@@ -87,7 +87,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               placeholder="Email"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>Phone:</Typography>
             <PhoneInput
               country="us"
@@ -99,7 +99,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               inputStyle={{ width: "100%" }}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>
               <span style={{ color: "red" }}>*</span>Zip Code:
             </Typography>
@@ -109,7 +109,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               placeholder="Zip Code"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>
               <span style={{ color: "red" }}>*</span>Credit Card Number:
             </Typography>
@@ -119,7 +119,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               placeholder="Credit Card Number"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>
               <span style={{ color: "red" }}>*</span>Card Expiry:
             </Typography>
@@ -129,7 +129,7 @@ export default function EventInfoModel({dialog,closeDialog}) {
               placeholder="Card Expiry"
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Typography sx={{ pb: 1 }}>
               <span style={{ color: "red" }}>*</span>CSV:
             </Typography>

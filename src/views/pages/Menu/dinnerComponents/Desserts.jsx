@@ -1,37 +1,40 @@
-import React from "react";
+import React from 'react'
 import {
-  Grid,
-  Typography,
-  Box,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  ListItemIcon,
-  Divider,
-  CardMedia,
+    Grid,
+    Typography,
+    Box,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemText,
+    ListItemIcon,
+    Divider,
+    CardMedia
 } from "@mui/material";
+
 import InboxIcon from "@mui/icons-material/Inbox";
-import contentImg2 from "../../../../assets/images/menuPage/contentImg2.jpg";
-const leftAffettatiItems = ["Bresaola", "Capicollo", "Sopressata", "Cotto"];
-const rightAffettatiItems = [
-  "Pancetta",
-  "Duck Prosciutto",
-  "‘Nduja",
-  "Tagliere",
+import contentImg2 from '../../../../assets/images/menuPage/dinner/contentImg6.jpg'
+
+const leftItems = [
+  'Sicilian Cannoli​', 
+  'Panna Cotta​', 
+  'Burrata​',
 ];
-const Affettati = () => {
-  return (
-    <div>
-      <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: "80px" }}>
-        <Grid item xs={12} sm={6}>
-          <CardMedia
-            component="img"
-            image={contentImg2}
-            sx={{ height: { xs: "100%", sm: "100%" } }}
-          />
+
+const rightItems = [
+  'Ricotta & Honey​', 
+  'Ricotta Mouse​', 
+];
+
+const Desserts = () => {
+    return (
+        <div>
+            <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: '80px' }}>
+            <Grid item xs={12} sm={6}>
+            <CardMedia component="img" image={contentImg2} sx={{height:{xs:'100%',lg:'100%'} }} />
+
         </Grid>
-        <Grid item xs={12} sm={6} sx={{ mt: {xs:0,sm:4} }}>
+        <Grid item xs={12} sm={6} sx={{ mt :{xs:1,sm:4} }}>
           <Typography
             variant="h4"
             sx={{
@@ -41,70 +44,76 @@ const Affettati = () => {
               pl: {xs:0,sm:2},
             }}
           >
-            Charcutherie – Affettati
+          Main
           </Typography>
-          <Grid container sx={{ mt: {xs:-4,sm:2} }} spacing={4}>
+
+          <Grid container sx={{ mt:{xs:-4,sm:2}}} spacing={4}>
+          
             <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
                   maxWidth: 360,
-                  bgcolor: "background.paper",
+                  bgcolor: "background.paper"
                 }}
               >
-                {leftAffettatiItems.map((leftAffettatiItem) => (
+                {leftItems.map((leftItem, index) => (
                   <>
                     <nav aria-label="main mailbox folders">
                       <List>
                         <ListItem disablePadding>
                           <ListItemButton>
-                            <ListItemIcon>
+                            <ListItemIcon sx={{minWidth:"40px !important"}}>
                               <InboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={leftAffettatiItem} />
+                            <ListItemText primary={leftItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
+                    
                     </nav>
-                    <Divider sx={{ background: "#bdb7b2" }} />
+                    <Divider />
                   </>
                 ))}
               </Box>
             </Grid>
-            <Grid item  xs={12} sm={6}>
+
+            <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
                   maxWidth: 360,
-                  bgcolor: "background.paper",
+                  bgcolor: "background.paper"
                 }}
               >
-                {rightAffettatiItems.map((rightAffettatiItem) => (
+                {rightItems.map((rightItem, index) => (
                   <>
                     <nav aria-label="main mailbox folders">
                       <List>
                         <ListItem disablePadding>
                           <ListItemButton>
-                            <ListItemIcon>
+                            <ListItemIcon sx={{minWidth:"40px !important"}}>
                               <InboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={rightAffettatiItem} />
+                            <ListItemText primary={rightItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
+                     
                     </nav>
-                    <Divider sx={{ background: "#bdb7b2" }} />
+                    <Divider />
                   </>
                 ))}
-                <Typography sx={{ mt: 3 }}>
-                  4 cheeses, charcuterie, bruschettas n more
-                </Typography>
+    
               </Box>
             </Grid>
           </Grid>
         </Grid>
+
+        
       </Grid>
-    </div>
-  );
-};
-export default Affettati;
+        </div>
+    )
+}
+
+export default Desserts
