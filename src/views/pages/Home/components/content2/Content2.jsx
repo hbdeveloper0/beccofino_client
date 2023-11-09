@@ -21,7 +21,9 @@ const Content2 = () => {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={3}>
+                <Grid  data-aos="fade-up" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000"
+                 container spacing={3}>
                     <Grid item xs={12} sm={4} >
                         <Grid className='img-bg-set'>
                             <img src={c2Img1} alt='img1' className='img-fluid'/>
@@ -52,7 +54,8 @@ const Content2 = () => {
                 </Grid>
 
                 
-                    <Grid>
+                    <Grid  data-aos="fade-down" data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000" >
                         <img src={c2MainImg} alt='mainImg' className='img-fluid' style={{ position: 'relative', top: 150}}/>
                     </Grid>
                 

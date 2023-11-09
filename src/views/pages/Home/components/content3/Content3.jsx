@@ -39,12 +39,16 @@ const Content3 = () => {
                 <Grid >
                     <Typography variant='h2' sx={{textAlign:"center", fontSize:{xs:'35px',md:"50px"}, fontFamily: 'Marecellus , sans-serif',color: '#111010',margin: 'auto'}}>Menu Items</Typography>
                 </Grid>
-                <Grid className='knifeImg' sx={{display:{xs:'none',sm:"flex"},justifyContent:"center",width:{xs:"100px",md:"auto"}}}>
+                <Grid data-aos="fade-up-left" data-aos-easing="ease-out-sine"
+                data-aos-duration="2000"
+                 className='knifeImg' sx={{display:{xs:'none',sm:"flex"},justifyContent:"center",width:{xs:"100px",md:"auto"}}}>
                     <img src={knifeImg} alt='knifeImg' className='img-fluid m-auto'/>
                 </Grid>
                 <Grid container  sx={{mt:5}}>
                     <Grid item xs={0} sm={1} md={1} ></Grid>
-                    <Grid item xs={12} sm={4} md={4} sx={{marginTop: {xs:"0px",sm:'150px'},  pb: '80px'}}>
+                    <Grid data-aos="fade-up-right" data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000"
+                     item xs={12} sm={4} md={4} sx={{marginTop: {xs:"0px",sm:'150px'},  pb: '80px'}}>
                    <Grid sx={{display:{xs:'block',sm:"none"}}}><img src={leftImg} alt='leftImg' className='img-fluid'/></Grid>
                         <Typography variant='h4' className='dinner-txt' sx={{pt:{xs:4,sm:0}}}>Dinner</Typography>
                         <p className='all-txt'>All of our menu items are made from scratch.. to order! Reservation is Suggested…</p>
@@ -71,8 +75,10 @@ const Content3 = () => {
                           width: '1px',
                           backgroundColor: 'grey'
                         }
-                      }}></Grid>
-                    <Grid xs={12} sm={4} md={4} item className='right-row-set'>
+                      }}>
+                      </Grid>
+                    <Grid data-aos="fade-up-right" data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000"  xs={12} sm={4} md={4} item className='right-row-set'>
                         <img src={rightImg} alt='rightImg' className='img-fluid'/>
                         <h4 className='dinner-txt pt-5'>Charcutherie</h4>
                         <p className='all-txt'>Norcino is the cold-cut master from the cities of Arezzo n Siena in Tuscany, come and taste the real deal!</p>

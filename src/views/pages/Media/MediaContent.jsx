@@ -77,6 +77,7 @@ const MediaContent = () => {
           <Grid container>
             <Grid item xs={12}>
               <CardMedia
+              data-aos="fade-left"
                 sx={{ width: "100px",position: 'relative', top: 50, left: {xs:126,sm:300,md:400,lg:500} }}
                 component="img"
                 alt="green iguana"
@@ -84,13 +85,19 @@ const MediaContent = () => {
               />
 
               {/* <img src={knifeIcon} alt='icon' height={100}  style={{ position: 'relative', top: 50, left: 500}}/> */}
-              <hr color="#bdb7b2" />
+              <hr data-aos="fade-right"
+              data-aos-anchor="#example-anchor"
+              data-aos-offset="500"
+              data-aos-duration="2500" color="#bdb7b2" />
             </Grid>
           </Grid>
 
-          <Grid container spacing={2} sx={{ mt: 4 }}>
+          <Grid  data-aos="fade-up"
+          data-aos-duration="3000" container spacing={2} sx={{ mt: 4 }}>
             {Images.slice(0, displayedImages).map((Image) => (
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000" item xs={12} sm={6} md={3}>
                 <img
                 className="img-fluid"
                   src={Image}

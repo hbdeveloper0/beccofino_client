@@ -24,13 +24,18 @@ const Content1 = () => {
             <Grid container sx={{backgroundColor: '#f0edea',height:'100%'}} >
                 <Container>
                     <Grid container spacing={2} sx={{py:'70px'}} >
-                        <Grid item xs={12} sm={6} sx={{m:'auto'}} >
+                        <Grid data-aos="fade-up"
+                        data-aos-duration="3000" item xs={12} sm={6} sx={{m:'auto'}} >
                             <Typography variant='h2' sx={{fontSize: {xs:'30px',sm:"50"},fontFamily: 'Marecellus sans-serif',color: '#111010'}} >Welcome to Beccofino!</Typography>
                             <Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',margin:'0px 0px 18px'}} >Sit back and relax you’re on a journey for an unique taste-buds adventure with exceptional handcrafted Italian specialties just made in-house…</Typography>
                             <Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',fontWeight: 'bold'}} >Beccofino is born!</Typography>
                             <GlobelButton value={'Discover Menu'}/>
                         </Grid>
-                        <Grid item xs={12} sm={6} >
+                        <Grid 
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500"
+                         item xs={12} sm={6} >
                             <img alt='rightImg' src={rightImg} className='img-fluid'/>
                         </Grid>
                     </Grid>
@@ -40,10 +45,16 @@ const Content1 = () => {
             <Grid container sx={{ height: '100%'}} >
                 <Container>
                     <Grid container spacing={2} sx={{py:'70px'}} >
-                        <Grid item xs={12} sm={6} >
+                        <Grid data-aos="fade-up"
+                        data-aos-duration="3000"
+                         item xs={12} sm={6} >
                             <img alt='leftImg' src={leftImg} className='img-fluid'/>
                         </Grid>
-                        <Grid item xs={12} sm={6} sx={{m:'auto'}}>
+                        <Grid 
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500"
+                         item xs={12} sm={6} sx={{m:'auto'}}>
                             <Typography variant='h2'  sx={{fontSize: {xs:'30px',sm:"50"},fontFamily: 'Marecellus sans-serif',color: '#111010'}} >Reservations</Typography>
                             <Grid><Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',fontWeight: 'bold'}}>Want To Reserve Your Table?</Typography></Grid>
                           <Grid sx={{display:'flex'}}><Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',margin:'0px 0px 18px'}} >Call Us On <StyledLink to="/">813-473-2105</StyledLink> Or Fill Up The Form For Online Booking</Typography></Grid>

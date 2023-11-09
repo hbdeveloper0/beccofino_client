@@ -19,7 +19,10 @@ const Content5 = () => {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={3} sx={{mt:3}} >
+                <Grid data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000"
+                container spacing={3} sx={{mt:3}} >
                     <Grid item sx={{}} xs={12} sm={3} >
                         <img src={c5Img1} alt='c5Img1' className='img-fluid'/>
                     </Grid>

@@ -15,11 +15,11 @@ const EventContent = () => {
         <div>
             <Grid container sx={{ backgroundImage: `url(${bgImg})`, height: 'auto' }}>
                 <Container >
-                    <Grid item xs={12} sx={{ textAlign: 'center', mt: "60px" }}>
-                        <Typography sx={{ fontFamily: 'Marecellus sans-serif', fontSize: '50px', color: '#111010' }}>Book an Event</Typography>
+                    <Grid data-aos="zoom-out" data-aos-duration="1500"  item xs={12} sx={{ textAlign: 'center', mt: "60px" }}>
+                        <Typography sx={{ fontFamily: 'Marecellus sans-serif', fontSize: {xs:'35px',sm:"50px"}, color: '#111010' }}>Book an Event</Typography>
                     </Grid>
 
-                    <Grid item xs={8} sx={{ mt: "50px", backgroundColor: '#FFFFFF', height: 'auto',maxWidth:{xs:"800px",sm:"auto"}, mx: 'auto', borderRadius: '15px', padding: '10px', mb: "60px"}}>
+                    <Grid  data-aos="zoom-in-up" item xs={8} sx={{ mt: "50px", backgroundColor: '#FFFFFF', height: 'auto',maxWidth:{xs:"800px",sm:"auto"}, mx: 'auto', borderRadius: '15px', padding: '10px', mb: "60px"}}>
                         <Typography sx={{ fontFamily: 'Amelia Montserrat sans-serif', fontSize: '18px', color: '#111010', padding: '0px 0px 16px' }}>1 Event Available</Typography>
 
                         <Grid container spacing={1}>

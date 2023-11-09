@@ -28,7 +28,10 @@ const Content4 = () => {
     return (
         <Grid container className='c4-main-bg'>
             <Container>
-                <Grid sx={{pt:5}}>
+                <Grid data-aos="zoom-in-down"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000"
+                 sx={{pt:5}}>
                     <Grid>
                         <p className='customer-txt'>Customers reviews</p> 
                         <Typography sx={{  fontSize: {xs:'35px',sm:"50px"},fontFamily: 'Marecellus sans-serif',

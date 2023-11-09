@@ -6,7 +6,7 @@ const headingStyle = {
   fontSize: {xs:"36px",sm:"66px"},
   fontFamily: "Marecellus sans-serif",
   color: "#FFFFFF",
-  marginTop:  {xs:"300px",sm:"600px"},
+  marginTop:  {xs:"260px",sm:"600px"},
 };
 const ImgStyle={
     backgroundSize: 'cover',
@@ -30,7 +30,9 @@ const Slider = () => {
               <Grid className="slider-bg-color">
                 <Grid className="container">
                   <Grid className="row">
-                    <Grid className="col-lg-12">
+                    <Grid   data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000" className="col-lg-12">
                       <Typography variant="h1" sx={{ ...headingStyle }}>
                         A Bite Away .....
                         <br /> From Italy
