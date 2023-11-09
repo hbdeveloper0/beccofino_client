@@ -52,7 +52,7 @@ const App = () => {
   const a = useContext(ModelContext)
 
   const [dayName, setDayName] = useState('')
-  const [timeSlots, setTimeSlots] = useState()
+  const [timeSlots, setTimeSlots] = useState('')
 
   const onPanelChange = (value, mode) => {
     // const formattedDate = dayjs(value).format("dddd, MMMM D, YYYY hh:mm A");
@@ -93,12 +93,12 @@ const App = () => {
 
   useEffect(() => {
     if(dayName !== ''){
-      const day_name = dayName;
-      console.log(dayName)
+      const day_name = dayName.toLowerCase();
+      console.log(day_name)
       axios.post(`${process.env.REACT_APP_API_URL}/reservation/get-TimeSlots`, {day_name}).then((response) =>{
-        // console.log(response.data.data.TimeSlots)
+        console.log(response.data.data.TimeSlots)
         setTimeSlots(response.data.data.TimeSlots)
-        console.log(timeSlots)
+        // console.log(response)
         }).catch ((error) => {
             if (error.response) {
               // The request was made and the server responded with a status code
@@ -127,11 +127,34 @@ const App = () => {
         <Typography sx={{ p: 1 }}>
           {a.currentdate}
         </Typography>
-        {/*{timeSlots.map((timeSlot) => {
-          
-        })}*/}
         <Grid container spacing={2} sx={{ p: 1 }}>
-          <Grid item xs={6}>
+        
+        {(timeSlots !== '') ? 
+          timeSlots.map((timeSlot) => (
+            
+              <Grid item xs={6} key={timeSlot.id}>
+                <Button
+                  fullWidth
+                  onClick={() => handleButtonClick(timeSlot.id)}
+                  sx={{
+                    border: "1px solid #f46e74",
+                    color: a.clickedButton === timeSlot.id ? "#FFFF" : "#f46e74",
+                    fontSize: "17px",
+                    background: a.clickedButton === timeSlot.id ? "red" : "#fde8e9",
+                    ":hover":{color:"black"}
+                  }}
+                >
+                  {timeSlot.slot_starting_time} - {timeSlot.slot_ending_time}
+              </Button>
+          </Grid>
+          ))
+          :
+          ''
+        }
+    
+
+     
+          {/*<Grid item xs={6}>
             <Button
               fullWidth
               onClick={() => handleButtonClick(1)}
@@ -146,7 +169,7 @@ const App = () => {
               6:00 PM - 6:45 PM
             </Button>
           </Grid>
-          {/*<Grid item xs={6}>
+          <Grid item xs={6}>
             <Button
               fullWidth
               onClick={() => handleButtonClick(2)}

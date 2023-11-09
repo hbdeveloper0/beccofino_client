@@ -178,8 +178,9 @@ const Form = () => {
   },[category])
 
   const handelSaveClick = () => {
-    const apiFormData = {table_category_id: category, total_persons: count+1, reservation_date: a.currentdate, fk_time_slot_id: a.clickedButton,  ...userData, };
+    const apiFormData = {fk_table_category_id: category, total_persons: count+1, reservation_date: a.currentdate, fk_time_slot_id: a.clickedButton,  ...userData, };
       axios.post(`${process.env.REACT_APP_API_URL}/reservation/book-Reservation`, apiFormData).then((response) =>{
+        
       console.log(response)
       }).catch ((error) => {
           if (error.response) {
@@ -190,6 +191,7 @@ const Form = () => {
             console.error('Error:', error.message);
           }
       })
+    
   }
 
   return (
