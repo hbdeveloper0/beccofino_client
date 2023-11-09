@@ -182,6 +182,7 @@ const Form = () => {
       axios.post(`${process.env.REACT_APP_API_URL}/reservation/book-Reservation`, apiFormData).then((response) =>{
         
       console.log(response)
+      alert('Booking Done Successfully')
       }).catch ((error) => {
           if (error.response) {
             // The request was made and the server responded with a status code
