@@ -28,7 +28,7 @@ const style = {
   boxShadow: 24,
   maxHeight: "750px",
   overflowY: "auto",
-  width: "650px",
+  width:{xs:"350px",sm:"650px"},
   p: 2,
   borderRadius: "13px",
 };
@@ -90,14 +90,23 @@ export default function Modals({ open, handleClose }) {
         size="lg"
       >
         <Box sx={{ ...style, ...customScrollbarStyle }}>
-          <Grid className="carousel" sx={{ px: 21 }}>
+        <Grid sx={{display:"flex",justifyContent:"end",py:2}}><Button
+        onClick={handleClose}
+        sx={{
+          border: "1px solid red",
+          color: "red",
+        
+        }}
+      >X
+      </Button></Grid>
+          <Grid className="carousel" sx={{ px: {xs:6,sm:21} }}>
             <img
               key={currentIndex}
               src={images[currentIndex]}
               style={{ height: "300px" }}
             />
             <div className="slide_direction">
-              <div className="left" onClick={handlePrevious}>
+              <Grid sx={{background:"#FFFF"}} className="left" onClick={handlePrevious}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="20"
@@ -106,8 +115,8 @@ export default function Modals({ open, handleClose }) {
                 >
                   <path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z" />
                 </svg>
-              </div>
-              <div className="right" onClick={handleNext}>
+              </Grid>
+              <Grid sx={{background:"#FFFF"}} className="right" onClick={handleNext}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="20"
@@ -116,7 +125,7 @@ export default function Modals({ open, handleClose }) {
                 >
                   <path d="m304 974-56-57 343-343-343-343 56-57 400 400-400 400Z" />
                 </svg>
-              </div>
+              </Grid>
             </div>
             <div
               className="indicator"
@@ -134,14 +143,14 @@ export default function Modals({ open, handleClose }) {
           </Grid>
 
           <Grid container>
-            <Grid item xs={2}>
-              <Typography sx={{ color: "#a9a8a8", pl: 0.5, fontSize: "15px" }}>
+            <Grid item xs={12} sm={2}>
+              <Typography sx={{ color: "#a9a8a8", pl: 0.5, fontSize: "15px",display:{xs:'flex',sm:"block"} }}>
                 Begins
                 <Box sx={{ fontWeight: "bold" }}>31Dec</Box>
                 10:00 pm
               </Typography>
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={12} sm={10}>
               <Typography sx={{ fontWeight: "bold", fontSize: "20px" }}>
                 New Year 2024
               </Typography>

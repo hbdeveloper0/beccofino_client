@@ -3,32 +3,25 @@ import {
   Grid,
   Container,
   Button,
-
 } from "@mui/material";
-
 import Chatcutharie from "./chatcutherieComponents";
 import Dinner from "./dinnerComponents";
-
 const MenuContent = () => {
   const [changeDisplay, setChangeDisplay] = useState('Chatcutharie')
-
   const ChatcutharieClick = () => {
     setChangeDisplay('Chatcutharie')
   }
   const DinnerClick = () => {
     setChangeDisplay('dinner')
   }
-
   const btnStyle = {
     backgroundColor: '#ed1d24'
     // border: 'none'
   }
-
   useEffect(() => {
     const button = document.getElementById('ChatcutharieBtn');
     button.focus()
   },[])
-
   return (
     <div>
       <Grid sx={{ backgroundColor: '#f0edea' }}>
@@ -75,15 +68,12 @@ const MenuContent = () => {
                 Dinner
               </Button>
             </Grid>
-
           </Grid>
         </Container>
       </Grid>
       
       {(changeDisplay) === 'Chatcutharie' ? <Chatcutharie/> : <Dinner/>}
-
     </div>
   );
 };
-
 export default MenuContent;

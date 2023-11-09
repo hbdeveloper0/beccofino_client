@@ -5,41 +5,64 @@ import rightImg from '../../../../../assets/images/homePage/content1/20210807_23
 import leftImg from '../../../../../assets/images/homePage/content1/20191203_181803-Medium-1.jpg'
 
 import GlobelButton from '../../../../components/GlobalButton/GlobelButton'
+import { Box, Container, Grid, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components';
+
+const StyledLink = styled(Link)
+`color: #5D5D5D;
+  font-size: 18px;
+  font-weight: bolder;
+  text-decoration: none;
+ &:hover {
+    color: red;
+  }`;
 
 const Content1 = () => {
     return (
         <>
-            <div className='container-fluid content1-bg'>
-                <div className='container'>
-                    <div className='row c1-row-set'>
-                        <div className='col-sm-6 col-xs-12 col-margin-set'>
-                            <h2 className='welcome-txt'>Welcome to Beccofino!</h2>
-                            <p className='sit-txt'>Sit back and relax you’re on a journey for an unique taste-buds adventure with exceptional handcrafted Italian specialties just made in-house…</p>
-                            <p className='becco-txt'>Beccofino is born!</p>
+            <Grid container sx={{backgroundColor: '#f0edea',height:'100%'}} >
+                <Container>
+                    <Grid container spacing={2} sx={{py:'70px'}} >
+                        <Grid data-aos="fade-up"
+                        data-aos-duration="3000" item xs={12} sm={6} sx={{m:'auto'}} >
+                            <Typography variant='h2' sx={{fontSize: {xs:'30px',sm:"50"},fontFamily: 'Marecellus sans-serif',color: '#111010'}} >Welcome to Beccofino!</Typography>
+                            <Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',margin:'0px 0px 18px'}} >Sit back and relax you’re on a journey for an unique taste-buds adventure with exceptional handcrafted Italian specialties just made in-house…</Typography>
+                            <Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',fontWeight: 'bold'}} >Beccofino is born!</Typography>
                             <GlobelButton value={'Discover Menu'}/>
-                        </div>
-                        <div className='col-sm-6 col-xs-12'>
+                        </Grid>
+                        <Grid 
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500"
+                         item xs={12} sm={6} >
                             <img alt='rightImg' src={rightImg} className='img-fluid'/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Grid>
 
-            <div className='container-fluid content1-p2-bg'>
-                <div className='container'>
-                    <div className='row c1-row-set'>
-                        <div className='col-sm-6 col-xs-12'>
+            <Grid container sx={{ height: '100%'}} >
+                <Container>
+                    <Grid container spacing={2} sx={{py:'70px'}} >
+                        <Grid data-aos="fade-up"
+                        data-aos-duration="3000"
+                         item xs={12} sm={6} >
                             <img alt='leftImg' src={leftImg} className='img-fluid'/>
-                        </div>
-                        <div className='col-sm-6 col-xs-12 col-margin-set'>
-                            <h2 className='welcome-txt'>Reservations</h2>
-                            <p className='becco-txt'>Want To Reserve Your Table?</p>
-                            <p className='sit-txt'>Call Us On <a role='button' href='/'>813-473-2105</a> Or Fill Up The Form For Online Booking</p>
+                        </Grid>
+                        <Grid 
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1500"
+                         item xs={12} sm={6} sx={{m:'auto'}}>
+                            <Typography variant='h2'  sx={{fontSize: {xs:'30px',sm:"50"},fontFamily: 'Marecellus sans-serif',color: '#111010'}} >Reservations</Typography>
+                            <Grid><Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',fontWeight: 'bold'}}>Want To Reserve Your Table?</Typography></Grid>
+                          <Grid sx={{display:'flex'}}><Typography variant='p' sx={{fontSize:'18px',fontFamily: 'Montserrat sans-serif',color: '#111010',margin:'0px 0px 18px'}} >Call Us On <StyledLink to="/">813-473-2105</StyledLink> Or Fill Up The Form For Online Booking</Typography></Grid>
                             <GlobelButton value={'Book Now'}/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Grid>
         </>
         
 

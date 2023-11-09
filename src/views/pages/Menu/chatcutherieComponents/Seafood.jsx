@@ -8,13 +8,11 @@ import {
   ListItemButton,
   ListItemText,
   ListItemIcon,
-  Divider
+  Divider,
+  CardMedia
 } from "@mui/material";
-
-
 import InboxIcon from "@mui/icons-material/Inbox";
 import contentImg1 from "../../../../assets/images/menuPage/contentImg3.jpg";
-
 const leftSeafoodtems = [
   "Bresaola",
   "Smoking Ham",
@@ -29,22 +27,22 @@ const rightSeafoodItems = [
 const Seafood = () => {
     return (
         <div>
-          <Grid container spacing={4} sx={{ pt: "80px" , pb: '80px'}}>
-            <Grid item xs={6}>
+          <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: '80px'}}>
+            <Grid item xs={12} sm={6}>
               <Typography
                 variant="h4"
                 sx={{
                   fontFamily: "Marrcellus sans-serif",
                   color: "#111010",
-                  fontSize: "32px",
-                  pl: 2
+                  fontSize: {xs:"26px",sm:"32px"},
+                  pl: {xs:0,sm:2},
                 }}
               >
               Charcutherie – Seafood
               </Typography>
     
-              <Grid container sx={{ mt: 2 }} spacing={4}>
-                <Grid item xs={6}>
+              <Grid container sx={{ mt:{xs:-4,sm:2} }} spacing={4}>
+                <Grid item xs={12} sm={6}>
                   <Box
                     sx={{
                       width: "100%",
@@ -57,23 +55,23 @@ const Seafood = () => {
                         <nav aria-label="main mailbox folders">
                           <List sx={{ backgroundColor: '#f0edea' }}>
                             <ListItem disablePadding>
-                              <ListItemButton>
-                                <ListItemIcon>
+                              <ListItemButton >
+                                <ListItemIcon  >
                                   <InboxIcon />
                                 </ListItemIcon>
-                                <ListItemText primary={leftSeafoodtem} />
+                                <ListItemText primary={leftSeafoodtem}  />
                               </ListItemButton>
                             </ListItem>
                           </List>
                         </nav>
-                        <Divider />
+                        <Divider sx={{ background: "#bdb7b2" }} />
                       </>
                     ))}
                   </Box>
-                  <Typography sx={{ mt:3 }}>Availability changes due to aging/season requirements</Typography>
+                  <Typography variant="p" sx={{ mt:3 ,display:{xs:'none',sm:"flex"} }}>Availability changes due to aging/season requirements</Typography>
                 </Grid>
     
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Box
                     sx={{
                       width: "100%",
@@ -95,24 +93,21 @@ const Seafood = () => {
                             </ListItem>
                           </List>
                         </nav>
-                        <Divider />
+                        <Divider sx={{ background: "#bdb7b2" }} />
                       </>
                     ))}
                   </Box>
+                  <Typography  sx={{ mt:3 ,display:{xs:'flex',sm:"none"}}}>Availability changes due to aging/season requirements</Typography>
                 </Grid>
               </Grid>
             </Grid>
     
-            <Grid item xs={6}>
-              <img
-                src={contentImg1}
-                alt="img"
-                style={{ width: "100%", height: "auto" }}
-              />
+            <Grid item xs={12} sm={6}>
+            <CardMedia component="img" image={contentImg1} sx={{height:{xs:'100%',lg:'100%'} }} />
+              
             </Grid>
           </Grid>
         </div>
       );
 }
-
 export default Seafood

@@ -8,7 +8,8 @@ import {
     ListItemButton,
     ListItemText,
     ListItemIcon,
-    Divider
+    Divider,
+    CardMedia
 } from "@mui/material";
 
 import InboxIcon from "@mui/icons-material/Inbox";
@@ -46,30 +47,30 @@ const rightLists = [
 const Mains = () => {
     return (
         <div>
-            <Grid container spacing={4} sx={{ pt: '80px', pb: '80px' }}>
-            <Grid item xs={6}>
-          <img
-            src={contentImg2}
-            alt="img"
-            style={{ width: "100%", height: "auto" }}
+            <Grid container spacing={4} sx={{ pt: {xs:"10px",sm:"80px"} , pb: '80px' }}>
+            <Grid item xs={12} sm={6}>
+            <CardMedia
+            component="img"
+            image={contentImg2}
+            sx={{ height: { xs: "80%", lg: "100%" } }}
           />
         </Grid>
-        <Grid item xs={6} sx={{ mt :4 }}>
+        <Grid item xs={12} sm={6} sx={{ mt :{xs:-13,sm:0,md:4} }}>
           <Typography
             variant="h4"
             sx={{
               fontFamily: "Marrcellus sans-serif",
               color: "#111010",
-              fontSize: "32px",
-              pl: 2
+              fontSize: {xs:"26px",sm:"32px"},
+              pl: {xs:0,sm:2},
             }}
           >
           Main
           </Typography>
 
-          <Grid container sx={{ mt: 2 }} spacing={4}>
+          <Grid container sx={{ mt: {xs:-4,sm:-3,md:2} }} spacing={4}>
           
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
@@ -83,7 +84,7 @@ const Mains = () => {
                       <List>
                         <ListItem disablePadding>
                           <ListItemButton>
-                            <ListItemIcon>
+                            <ListItemIcon sx={{minWidth:"40px !important"}}>
                               <InboxIcon />
                             </ListItemIcon>
                             <ListItemText primary={leftItem} />
@@ -92,13 +93,13 @@ const Mains = () => {
                       </List>
                       <Typography sx={{color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{leftLists[index]}</Typography>
                     </nav>
-                    <Divider />
+                    <Divider sx={{ background: "#bdb7b2" }} />
                   </>
                 ))}
               </Box>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
@@ -112,16 +113,16 @@ const Mains = () => {
                       <List>
                         <ListItem disablePadding>
                           <ListItemButton>
-                            <ListItemIcon>
+                            <ListItemIcon sx={{minWidth:"40px !important"}}>
                               <InboxIcon />
                             </ListItemIcon>
                             <ListItemText primary={rightItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
-                      <Typography sx={{color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{rightLists[index]}</Typography>
+                      <Typography sx={{color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px',pl: {xs:2,sm:3} ,pb:1 }}>{rightLists[index]}</Typography>
                     </nav>
-                    <Divider />
+                    <Divider sx={{ background: "#bdb7b2" }} />
                   </>
                 ))}
     

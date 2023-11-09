@@ -3,10 +3,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Divider, Grid } from "@mui/material";
+import { Divider, Grid, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
+
+import CloseIcon from '@mui/icons-material/Close';
 import ForumIcon from '@mui/icons-material/Forum';
 
 import Logo from "../../../assets/images/reservation/ResLogo.png";
@@ -19,7 +21,8 @@ const style = {
   border: "none",
   boxShadow: 24,
   maxHeight: "750px",
-  width: "650px",
+  overflowY: "auto",
+  width: {xs:"350px",sm:"650px"},
   // p: 2,
   borderRadius: "13px",
 };
@@ -41,6 +44,18 @@ export default function AboutEventModel({ info, handleCloseInfo }) {
             <Typography sx={{ px: 4, py: 3, fontWeight: "bold" }}>
               Congratulations
             </Typography>
+            <IconButton
+            aria-label="close"
+            onClick={handleCloseInfo}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
           </Grid>
           <Grid sx={{ textAlign: "center", pt: 5 }}>
             <Typography
@@ -88,32 +103,25 @@ export default function AboutEventModel({ info, handleCloseInfo }) {
             
           </Grid>
          <Typography sx={{textAlign:"center",fontSize:"20px",py:2}}>Add to Calendar</Typography>
-          <Grid container  sx={{pb:3}}>
-          <Grid item xs={2} />
-        
-          
-          <Grid item xs={2}>
+          <Grid container  sx={{pb:3,display:'flex',justifyContent:"center"}}>
+        <Grid item xs={5} sm={2} >
          <Grid sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px"}}>
          <GoogleIcon sx={{fontSize:"30px",ml:3}} />
          <Typography sx={{textAlign:"center"}}>Google</Typography>
          </Grid>
           </Grid> 
-          <Grid item xs={2} sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px"}}>
+          <Grid item xs={5} sm={2} sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px"}}>
           <ForumIcon sx={{fontSize:"30px",ml:3}} />
               <Typography sx={{textAlign:"center"}}>Outlook</Typography>
           </Grid> 
-          <Grid item xs={2} sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px"}}>
+          <Grid item xs={4.5} sm={2} sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px",mt:{xs:'10px',sm:"0px"}}}>
           <ForumIcon sx={{fontSize:"30px",ml:3}} />
         <Typography sx={{textAlign:"center"}}>Yahoo</Typography>
           </Grid>
-          <Grid item xs={2} sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px"}}>
+          <Grid item xs={4.9} sm={2} sx={{border:"1px solid #dcdcdc",background:"#f3f3f3",borderRadius:1,p:1,mr:"10px",mt:{xs:'10px',sm:"0px"}}}>
           <AppleIcon sx={{fontSize:"30px",ml:3}} />
           <Typography sx={{textAlign:"center"}}>Apple</Typography>
           </Grid> 
-          <Grid item xs={2}>
-         
-          </Grid> 
-          
           </Grid>
          
 
@@ -132,7 +140,7 @@ export default function AboutEventModel({ info, handleCloseInfo }) {
               }}
             
             >
-             Customer Panel 
+             Close
             </Button>
             <Button
             onClick={() => navigate("/")}

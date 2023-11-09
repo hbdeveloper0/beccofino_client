@@ -33,6 +33,7 @@ const Home = () => {
         <div>
             <Navbar logo={navLogo} bgColor={'transparent'} textColor={'#F0EDEA'}/>
             <Slider/>
+           
             <Content1/>
             <Content2/>
             <Content3/>

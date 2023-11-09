@@ -1,10 +1,9 @@
+
 import React from 'react'
 import { Grid, Container, Typography } from '@mui/material'
 import Cheeses from './Cheeses'
 import Affetati from './Affettati'
 import Seafood from './Seafood'
-
-
 const Chatcutharie = () => {
     return (
         <div>
@@ -29,5 +28,4 @@ const Chatcutharie = () => {
         </div>
     )
 }
-
 export default Chatcutharie

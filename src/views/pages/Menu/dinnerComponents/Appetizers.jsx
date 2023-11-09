@@ -8,7 +8,8 @@ import {
   ListItemButton,
   ListItemText,
   ListItemIcon,
-  Divider
+  Divider,
+  CardMedia
 } from "@mui/material";
 
 
@@ -45,22 +46,22 @@ const rightAppetizersLists = [
 const Appetizers = () => {
   return (
     <div>
-      <Grid container spacing={4} sx={{ pt: "80px", pb: '100px'}}>
-        <Grid item xs={6}>
+      <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: '100px'}}>
+        <Grid item xs={12} sm={6}>
           <Typography
             variant="h4"
             sx={{
               fontFamily: "Marrcellus sans-serif",
               color: "#111010",
-              fontSize: "32px",
-              pl: 2
+              fontSize: {xs:"26px",sm:"32px"},
+              pl: {xs:0,sm:2},
             }}
           >
           Appetizers
           </Typography>
 
-          <Grid container sx={{ mt: 2 }} spacing={4}>
-            <Grid item xs={6}>
+          <Grid container sx={{ mt:{xs:-4,sm:2}}} spacing={4}>
+            <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
@@ -73,8 +74,8 @@ const Appetizers = () => {
                     <nav aria-label="main mailbox folders">
                       <List sx={{ backgroundColor: '#f0edea'}}>
                         <ListItem disablePadding>
-                          <ListItemButton>
-                            <ListItemIcon>
+                          <ListItemButton >
+                            <ListItemIcon sx={{minWidth:"40px !important"}}>
                               <InboxIcon />
                             </ListItemIcon>
                             <ListItemText primary={leftAppetizersItem}/>
@@ -82,16 +83,16 @@ const Appetizers = () => {
                           
                         </ListItem>
                       </List>
-                      <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: 3 }}>{leftAppetizersLines[index]}</Typography>
+                      <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: {xs:2,sm:3} ,pb:1 }}>{leftAppetizersLines[index]}</Typography>
                     </nav>
-                    <Divider />
+                    <Divider sx={{ background: "#bdb7b2" }} />
                   </>
                 ))}
                 
               </Box>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
@@ -105,16 +106,16 @@ const Appetizers = () => {
                       <List sx={{ backgroundColor: '#f0edea' }}>
                         <ListItem disablePadding>
                           <ListItemButton>
-                            <ListItemIcon>
+                            <ListItemIcon sx={{minWidth:"40px !important"}}>
                               <InboxIcon />
                             </ListItemIcon>
                             <ListItemText primary={rightAppetizersItem} />
                           </ListItemButton>
                         </ListItem>
                       </List>
-                      <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px' }}>{rightAppetizersLists[index]}</Typography>
+                      <Typography sx={{ backgroundColor: '#f0edea', color: '111010', fontFamily: "Montserrat sans-serif", fontSize: '14px', pl: {xs:2,sm:3} ,pb:1 }}>{rightAppetizersLists[index]}</Typography>
                     </nav>
-                    <Divider />
+                    <Divider sx={{ background: "#bdb7b2" }} />
                   </>
                 ))}
               </Box>
@@ -122,12 +123,10 @@ const Appetizers = () => {
           </Grid>
         </Grid>
 
-        <Grid item xs={6}>
-          <img
-            src={contentImg1}
-            alt="img"
-            style={{ width: "100%", height: "auto" }}
-          />
+        <Grid item xs={12} sm={6}>
+        <CardMedia component="img" image={contentImg1} sx={{height:{xs:'100%',lg:'100%'} }} />
+
+          
         </Grid>
       </Grid>
     </div>

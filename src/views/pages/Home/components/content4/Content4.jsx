@@ -1,5 +1,7 @@
 import React from 'react'
 import './Content4.css'
+import { Container, Grid, Typography } from '@mui/material'
+
 
 const sliderMianTxt = [
     'Best Italian in Florida. You will not find a better meal with better people. Prime date spot. You will be taken care of if you choose this as your dinner spot. Will not disappoint. Homemade pasta and the greatest steak I’ve ever had in my entire life. Ethan Morency This is true authentic Italian restaurant. The owner comes around and introduces himself. The flavor in the food is amazing and flavorful. This is not American restaurant don’t expect American result . It’s small and cozy I enjoyed my time. Hint get lobster it will have you coming back for more and desert is amazing !',
@@ -24,29 +26,33 @@ const sliderNameTxt = ['Danielle Hewitt', 'M Estrada', 'Chase', 'Fritz Eichelber
 
 const Content4 = () => {
     return (
-        <div className='container-fluid c4-main-bg'>
-            <div className='container'>
-                <div className='row pt-5'>
-                    <div className='col-lg-12'>
+        <Grid container className='c4-main-bg'>
+            <Container>
+                <Grid data-aos="zoom-in-down"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000"
+                 sx={{pt:5}}>
+                    <Grid>
                         <p className='customer-txt'>Customers reviews</p> 
-                        <p className='what-txt'>What people say?</p>      
-                        <div id="carousel2ExampleControls" className="carousel slide"  data-ride="carousel">
-                            <div className='container-fluid'>
-                                <div className='container'>
-                                    <div className='row'>
-                                        <div className='col-lg-8 m-auto'>
-                                            <div className="carousel-inner  slider-bg-set">
+                        <Typography sx={{  fontSize: {xs:'35px',sm:"50px"},fontFamily: 'Marecellus sans-serif',
+                            color:' #FFFFFF',textAlign: 'center',pb:2}}>What people say?</Typography>      
+                        <Grid id="carousel2ExampleControls" className="carousel slide"  data-ride="carousel">
+                            <Grid container>
+                                <Grid container>
+                                    <Grid>
+                                        <Grid sx={{m:'auto'}} xs={8}>
+                                            <Grid className="carousel-inner  slider-bg-set">
                                                 {sliderMianTxt.map((txt, index) => (
-                                                    <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                                                    <Grid key={index} sx={{background:"black"}} className={`carousel-item ${index === 0 ? 'active' : ''}`} >
                                                         <p className='slider-main-txt'>{txt}</p>
                                                         <p className='slider-name-txt'>{sliderNameTxt[index]}</p>
-                                                    </div>
+                                                    </Grid>
                                                 ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
                             
                             <a class="carousel-control-prev" href="#carousel2ExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -56,12 +62,12 @@ const Content4 = () => {
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
-                        </div>
+                        </Grid>
         
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </Grid>
+                </Grid>
+            </Container>
+        </Grid>
        
     )
 }

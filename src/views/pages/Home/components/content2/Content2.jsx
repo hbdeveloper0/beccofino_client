@@ -6,56 +6,61 @@ import c2Img3 from '../../../../../assets/images/homePage/content2/c2p3-Medium-4
 import c2MainImg from '../../../../../assets/images/homePage/content2/c2-main-img-20230309_214444-Large-1.jpg'
 
 import GlobelButton from '../../../../components/GlobalButton/GlobelButton'
+import { Container, Grid, Typography } from '@mui/material'
+
 
 const Content2 = () => {
     return (
-        <div className='container-fluid c2-bg'>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-lg-12 top-col-set mt-5'>
-                        <h2 className='event-txt'>Events</h2>
+        <Grid container className='c2-bg'>
+            <Container>
+                <Grid>
+                    <Grid className='top-col-set mt-5'>
+                        <Typography variant='h2' sx={{  fontSize:{xs:'35px',md:"50px"}, fontFamily: 'Marecellus, sans-serif',color: '#FFFFFF'}} >Events</Typography>
                         <p className='more-txt'>More Events Are Waiting!</p>
                         <p className='do-txt'>Do You Want To Know The Time Schedule?</p>
-                    </div>
-                </div>
+                    </Grid>
+                </Grid>
 
-                <div className='row'>
-                    <div className='col-lg-4'>
-                        <div className='img-bg-set'>
+                <Grid  data-aos="fade-up" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000"
+                 container spacing={3}>
+                    <Grid item xs={12} sm={4} >
+                        <Grid className='img-bg-set'>
                             <img src={c2Img1} alt='img1' className='img-fluid'/>
-                            <h3 className='h3-san-txt pt-4'>San Valentino</h3>
+                            <h3 className='h3-san-txt pt-4' >San Valentino</h3>
                             <p className='lorem-txt pb-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        </div>
-                    </div>
-                    <div className='col-lg-4'>
-                        <div className='img-bg-set'>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={4} >
+                        <Grid className='img-bg-set'>
                             <img src={c2Img2} alt='img1' className='img-fluid'/>
                             <h3 className='h3-san-txt pt-4'>Wine Dinners</h3>
                             <p className='lorem-txt pb-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        </div>
-                    </div>
-                    <div className='col-lg-4'>
-                        <div className='img-bg-set'>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={4} >
+                        <Grid className='img-bg-set'>
                             <img src={c2Img3} alt='img1' className='img-fluid'/>
                             <h3 className='h3-san-txt pt-4'>New Year 2024</h3>
                             <p className='lorem-txt pb-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                        </div>
-                    </div>
-                </div>
+                        </Grid>
+                    </Grid>
+                </Grid>
 
-                <div className='row mt-4'>
-                    <div className='col-lg-12  btn-bg-set'>
+                <Grid sx={{mt:4}}>
+                    <Grid className='btn-bg-set'>
                         <GlobelButton value={'View More'}/>
-                    </div>
-                </div>
+                    </Grid>
+                </Grid>
 
-                <div className='row main-img-bg'>
-                    <div className='col-lg-12 '>
+                
+                    <Grid  data-aos="fade-down" data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000" >
                         <img src={c2MainImg} alt='mainImg' className='img-fluid' style={{ position: 'relative', top: 150}}/>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </Grid>
+                
+            </Container>
+        </Grid>
     )
 }
 

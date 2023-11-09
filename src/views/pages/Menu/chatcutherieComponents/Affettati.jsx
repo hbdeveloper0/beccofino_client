@@ -1,54 +1,55 @@
-import React from 'react'
+import React from "react";
 import {
-    Grid,
-    Typography,
-    Box,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    ListItemIcon,
-    Divider
+  Grid,
+  Typography,
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  ListItemIcon,
+  Divider,
+  CardMedia,
 } from "@mui/material";
-
 import InboxIcon from "@mui/icons-material/Inbox";
-import contentImg2 from '../../../../assets/images/menuPage/contentImg2.jpg'
-
-const leftAffettatiItems = ['Bresaola', 'Capicollo', 'Sopressata', 'Cotto'];
-const rightAffettatiItems = ['Pancetta', 'Duck Prosciutto', '‘Nduja', 'Tagliere'];
-
+import contentImg2 from "../../../../assets/images/menuPage/contentImg2.jpg";
+const leftAffettatiItems = ["Bresaola", "Capicollo", "Sopressata", "Cotto"];
+const rightAffettatiItems = [
+  "Pancetta",
+  "Duck Prosciutto",
+  "‘Nduja",
+  "Tagliere",
+];
 const Affettati = () => {
-    return (
-        <div>
-            <Grid container spacing={4} sx={{ pt: '80px', pb: '80px' }}>
-            <Grid item xs={6}>
-          <img
-            src={contentImg2}
-            alt="img"
-            style={{ width: "100%", height: "auto" }}
+  return (
+    <div>
+      <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: "80px" }}>
+        <Grid item xs={12} sm={6}>
+          <CardMedia
+            component="img"
+            image={contentImg2}
+            sx={{ height: { xs: "100%", sm: "100%" } }}
           />
         </Grid>
-        <Grid item xs={6} sx={{ mt :4 }}>
+        <Grid item xs={12} sm={6} sx={{ mt: {xs:0,sm:4} }}>
           <Typography
             variant="h4"
             sx={{
               fontFamily: "Marrcellus sans-serif",
               color: "#111010",
-              fontSize: "32px",
-              pl: 2
+              fontSize: {xs:"26px",sm:"32px"},
+              pl: {xs:0,sm:2},
             }}
           >
             Charcutherie – Affettati
           </Typography>
-
-          <Grid container sx={{ mt: 2 }} spacing={4}>
-          
-            <Grid item xs={6}>
+          <Grid container sx={{ mt: {xs:-4,sm:2} }} spacing={4}>
+            <Grid item xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
                   maxWidth: 360,
-                  bgcolor: "background.paper"
+                  bgcolor: "background.paper",
                 }}
               >
                 {leftAffettatiItems.map((leftAffettatiItem) => (
@@ -65,18 +66,17 @@ const Affettati = () => {
                         </ListItem>
                       </List>
                     </nav>
-                    <Divider />
+                    <Divider sx={{ background: "#bdb7b2" }} />
                   </>
                 ))}
               </Box>
             </Grid>
-
-            <Grid item xs={6}>
+            <Grid item  xs={12} sm={6}>
               <Box
                 sx={{
                   width: "100%",
                   maxWidth: 360,
-                  bgcolor: "background.paper"
+                  bgcolor: "background.paper",
                 }}
               >
                 {rightAffettatiItems.map((rightAffettatiItem) => (
@@ -93,19 +93,18 @@ const Affettati = () => {
                         </ListItem>
                       </List>
                     </nav>
-                    <Divider />
+                    <Divider sx={{ background: "#bdb7b2" }} />
                   </>
                 ))}
-                <Typography sx={{ mt:3 }}>4 cheeses, charcuterie, bruschettas n more</Typography>
+                <Typography sx={{ mt: 3 }}>
+                  4 cheeses, charcuterie, bruschettas n more
+                </Typography>
               </Box>
             </Grid>
           </Grid>
         </Grid>
-
-        
       </Grid>
-        </div>
-    )
-}
-
-export default Affettati
+    </div>
+  );
+};
+export default Affettati;
