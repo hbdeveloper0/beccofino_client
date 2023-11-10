@@ -18,7 +18,7 @@ const Footer2 = () => {
       <Grid item xs={12} sx={{ backgroundColor: "#111010", height: "100%" }}>
         <Container>
           <Grid container sx={{ marginTop: "60px", marginBottom: "60px" }}>
-            <Grid item md={5} xs={12}>
+            <Grid  data-aos="fade-down" data-aos-duration="2000" item md={5} xs={12}>
               <Typography
                 sx={{
                   fontFamily: "Marcellus Sans-serif",
@@ -42,6 +42,8 @@ const Footer2 = () => {
             </Grid>
             <Grid item xs={12} md={2} />
             <Grid
+            data-aos="fade-up"
+            data-aos-duration="2000"
               item
               xs={12}
               md={5}
@@ -70,7 +72,8 @@ const Footer2 = () => {
                 Get direction
               </Button>
             </Grid>
-            <Grid>
+            <Grid data-aos="fade-up"
+            data-aos-duration="2000">
               <Box sx={{}}>
                 <Link href="/" sx={{ color: "#FFFFFF" }}>
                   <FacebookRoundedIcon />
@@ -94,7 +97,7 @@ const Footer2 = () => {
         <Grid item xs={12}>
           <Container>
             <Grid container sx={{ mt: 5, mb: 5 }}>
-              <Grid item xs={12} md={4}>
+              <Grid data-aos="flip-left"  data-aos-duration="2000" item xs={12} md={4}>
                 <Typography
                   variant="h5"
                   sx={{
@@ -132,7 +135,7 @@ const Footer2 = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              <Grid data-aos="flip-up"  data-aos-duration="2000" item xs={12} md={4}>
                 <Typography
                   variant="h5"
                   sx={{
@@ -167,7 +170,7 @@ const Footer2 = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              <Grid data-aos="flip-right"  data-aos-duration="2000"  item xs={12} md={4}>
                 <Typography
                   variant="h5"
                   sx={{

@@ -36,3 +36,18 @@
 .slider-bg-set{
     height: 400px;
 }
+/* @media screen and (max-width: 767px) {
+    .slider-bg-set {
+        height: 600px !important;
+    }
+} */
+
+.carousel-control-next, .carousel-control-prev {
+    bottom: 300px !important;
+}
+
+@media screen and (max-width: 767px) {
+    .carousel-control-next, .carousel-control-prev {
+        bottom: 0 !important;
+    }
+}

@@ -60,7 +60,7 @@ const BillingDetail = () => {
                 If you have a coupon code, please apply it below.
               </Typography>
               <Grid container spacing={2}>
-                <Grid item xs={6} sx={{ px: 5 }}>
+                <Grid item xs={12} sm={6} sx={{ px: {xs:0,sm:5} }}>
                   <TextField
                     fullWidth
                     id="outlined-email-address"
@@ -68,7 +68,7 @@ const BillingDetail = () => {
                     sx={{ pl: 2 }}
                   />
                 </Grid>
-                <Grid item xs={5} sx={{ ml: 3 }}>
+                <Grid item xs={12} sm={6}  sx={{ ml: {xs:2,sm:3} }}>
                   <GlobelButton
                     onClick={() => alert()}
                     value={"Applay Coupon"}
@@ -81,14 +81,14 @@ const BillingDetail = () => {
       )}
 
       <Grid container spacing={6} sx={{ pt: 5 }}>
-        <Grid item xs={6}>
-          <Typography sx={{ fontSize: "40px", fontFamily: "Jost Sans-serif" }}>
+        <Grid item xs={12} sm={6}>
+          <Typography sx={{ fontSize: {xs:"30px",sm:"40px"}, fontFamily: "Jost Sans-serif" }}>
             Billing details
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <Typography>
-                First Name <span style={{ color: "red" }}>*</span>{" "}
+                First Name <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -98,7 +98,7 @@ const BillingDetail = () => {
             </Grid>
             <Grid item xs={6}>
               <Typography>
-                Last Name <span style={{ color: "red" }}>*</span>{" "}
+                Last Name <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -117,7 +117,7 @@ const BillingDetail = () => {
           </Grid>
           <Grid sx={{ pt: 2 }}>
             <Typography>
-              Country / Region <span style={{ color: "red" }}>*</span>{" "}
+              Country / Region <span style={{ color: "red" }}>*</span>
             </Typography>
             <Grid sx={{ pt: 1 }}>
               <Autocomplete
@@ -196,8 +196,8 @@ const BillingDetail = () => {
             />
           </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Typography sx={{ fontSize: "40px", fontFamily: "Jost Sans-serif" }}>
+        <Grid item xs={12} sm={6}>
+          <Typography sx={{ fontSize: {xs:"30px",sm:"40px"}, fontFamily: "Jost Sans-serif" }}>
             Additional information
           </Typography>
           <Grid sx={{ pt: 3 }}>
@@ -231,7 +231,7 @@ const BillingDetail = () => {
                 Appointment <span style={{ fontWeight: "bold" }}> × 1</span>
               </Typography>
               <Typography sx={{ borderBottom: "1px solid #d8d5d2" }}>
-                Appointment Info:{" "}
+                Appointment Info:
               </Typography>
               <Typography sx={{}}>
                 <span style={{ fontWeight: "bold" }}>Local Time:</span> November
@@ -248,7 +248,7 @@ const BillingDetail = () => {
               <Typography sx={{}}>
                 <span style={{ fontWeight: "bold" }}>
                   Total Number of People:
-                </span>{" "}
+                </span>
                 1
               </Typography>
               <Typography sx={{}}>
@@ -313,7 +313,7 @@ const BillingDetail = () => {
       <Divider sx={{pt:4}} />
       <Grid sx={{pt:1}}>
       <Typography sx={{fontSize:"14px"}}>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</Typography>
-    <Grid sx={{display:"flex",justifyContent:"end",pt:3}}>
+    <Grid sx={{display:"flex",justifyContent:{xs:"center",sm:"end"},pt:3}}>
     <GlobelButton  
      onClick={() => alert()}
      value={"Place Order"}

@@ -5,7 +5,7 @@ import ImgSec from '../../../assets/images/contact/ImgSection.jpg'
 const ImgSection = () => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} md={6} >
+      <Grid data-aos="zoom-in-up" data-aos-duration="1500" item xs={12} md={6} >
        <Container maxWidth="md" sx={{pt:{xs:5,lg:30},}}>
        <Grid sx={{pl:{xs:0,lg:10}}}>
        <Typography sx={{fontFamily:"Jost Sans-serif",fontSize:{xs:'20px',lg:'30px'} }}>FEEL AT HOME</Typography>
@@ -19,7 +19,7 @@ const ImgSection = () => {
        
        </Container>
       </Grid>
-      <Grid item xs={12} md={6} sx={{pb:{xs:1.7,lg:34},}}>
+      <Grid data-aos="zoom-in-down" data-aos-duration="1500" item xs={12} md={6} sx={{pb:{xs:1.7,lg:34},}}>
       <CardMedia component="img" image={ImgSec} sx={{height:{xs:'100%',lg:'140%'} ,pt:{xs:2,lg:10},px:{xs:2,lg:0}}} />
       </Grid>
       </Grid>

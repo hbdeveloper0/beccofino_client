@@ -24,14 +24,14 @@ const Affettati = () => {
   return (
     <div>
       <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: "80px" }}>
-        <Grid item xs={12} sm={6}>
+        <Grid data-aos="flip-up" data-aos-duration="1500" item xs={12} sm={6}>
           <CardMedia
             component="img"
             image={contentImg2}
             sx={{ height: { xs: "100%", sm: "100%" } }}
           />
         </Grid>
-        <Grid item xs={12} sm={6} sx={{ mt: {xs:0,sm:4} }}>
+        <Grid data-aos="flip-down" data-aos-duration="1500" item xs={12} sm={6} sx={{ mt: {xs:0,sm:4} }}>
           <Typography
             variant="h4"
             sx={{

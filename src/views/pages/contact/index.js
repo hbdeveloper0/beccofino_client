@@ -21,7 +21,7 @@ const Contact = () => {
      <Grid  sx={{background:"#20232e",pt:5}}>
         <FormSection/>
     </Grid>
-     <Grid  sx={{background:"#FFFF",pt:5}}>
+     <Grid   sx={{background:"#FFFF",pt:5}}>
         <MapSection/>
     </Grid>
       <Footer />

@@ -139,7 +139,7 @@ const App = () => {
                   sx={{
                     border: "1px solid #f46e74",
                     color: a.clickedButton === timeSlot.id ? "#FFFF" : "#f46e74",
-                    fontSize: "17px",
+                    fontSize: {xs:"12px",sm:"17px"},
                     background: a.clickedButton === timeSlot.id ? "red" : "#fde8e9",
                     ":hover":{color:"black"}
                   }}

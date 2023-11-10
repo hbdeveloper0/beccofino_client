@@ -11,9 +11,9 @@ import { Link } from 'react-router-dom'
 
 const BookRreservation = () => {
     return (
-        <Container maxWidth="xl" >
-        <Grid sx={{p:8}}>
-        <Grid sx={{p:5,border:"1px dashed  red",background:"#ffffff",textAlign:"center"}}>
+        <Container data-aos="fade-down" maxWidth="xl" sx={{pb:4}} >
+        <Grid sx={{p:{xs:1,sm:8}}}>
+        <Grid sx={{p:{xs:1,sm:5},border:"1px dashed  red",background:"#ffffff",textAlign:"center"}}>
         <Typography sx={{fontSize:'40px'}}>Book a Reservation</Typography>
         <Container maxWidth="md" sx={{p:'0px !important'}}>
         <Typography sx={{fontWeight:'bold' ,fontSize:"17px",pt:3}}>Kindly call for same-day or last-minute bookings, as our kitchen may be busy preparing fresh meals.<Link href="#" style={{color:'#ed1d24',fontSize:"19px",textDecoration:"underline" }} underline="always">Call Us.</Link> </Typography>
@@ -21,7 +21,8 @@ const BookRreservation = () => {
         </Container>
         </Grid>
   
-        </Grid></Container>
+        </Grid>
+        </Container>
 
        
     )

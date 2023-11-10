@@ -38,6 +38,7 @@ import MyApp from "./Calender";
 import axios from 'axios'
 
 import ModelContext from "../../../context/ModelContext";
+import { useNavigate } from "react-router";
 // tabs
 function TabPanel({ children, value, index, ...other }) {
   return (
@@ -77,6 +78,7 @@ const top100Films = [
 ];
 // ==============================|| PROFILE 2 ||============================== //
 const Form = () => {
+  const navigate=useNavigate();
  
   const [message, setMessage] = useState('');
   const [menuCaption, setmenuCaption] = useState();
@@ -191,7 +193,7 @@ const Form = () => {
             console.error('Error:', error.message);
           }
       })
-    
+    navigate('/checkout');
   }
 
   return (
@@ -212,6 +214,7 @@ const Form = () => {
                   background: "#ed1d24",
                   color: "#FFFF",
                   borderRadius: "10px",
+                  display:{xs:"none",sm:"flex"},
                   "& .MuiTabs-flexContainer": {
                     borderBottom: "none",
                   },
@@ -254,6 +257,7 @@ const Form = () => {
               >
                 {tabsOption.map((tab, index) => (
                   <Tab
+                 
                     key={index}
                     icon={tab.icon}
                     label={
@@ -339,16 +343,17 @@ const Form = () => {
                     }}
                   >
                     <Grid container spacing={2} sx={{p:1}}>
-                      <Grid item xs={8.5} sx={{ display:'flex',mt:1,}}>
+                      <Grid item   xs={12} sm={8.5} sx={{ display:'flex',mt:1,}}>
                         <PersonAddIcon  />
                         <Typography sx={{pl:1}}>Additional People</Typography>
                       </Grid>
-                      <Grid item xs={3.5}>
+                      <Grid item  xs={12} sm={3.5}>
                         <Grid
                           sx={{
                             display: "flex",
                             border: "1px solid #babfc3",
                             borderRadius: "7px",
+                            justifyContent:"center"
                           }}
                         >
                          
@@ -356,7 +361,7 @@ const Form = () => {
                           <RemoveIcon size="small" />
                         </IconButton>
                           <Typography sx={{ p: 1 }} >{count}</Typography>
-                          <IconButton onClick={IncNum} sx={{ pr: 2 }} disabled={count === 9}>
+                          <IconButton onClick={IncNum} sx={{ pr: {xs:4,sm:2} }} disabled={count === 9}>
                           <AddIcon />
                         </IconButton>
                          
@@ -378,7 +383,7 @@ const Form = () => {
                 </Grid>
                 <Grid sx={{ p: 3 }}>
                   <Grid container spacing={2}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
                       <Typography sx={{ pb: 1 }}>
                         <span style={{ color: "red" }}>*</span>First Name:
                       </Typography>
@@ -391,7 +396,7 @@ const Form = () => {
                         
                       />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
                       <Typography sx={{ pb: 1 }}>Last Name:</Typography>
                       <TextField
                         fullWidth
@@ -401,7 +406,7 @@ const Form = () => {
                         onChange={(e)=> setUserData({...userData, last_name: e.target.value})}
                       />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
                       <Typography sx={{ pb: 1 }}>
                         <span style={{ color: "red" }}>*</span>Email:
                       </Typography>
@@ -413,7 +418,7 @@ const Form = () => {
                         onChange={(e)=> setUserData({...userData, email: e.target.value})}
                       />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
                       <Typography sx={{ pb: 1 }}>Phone:</Typography>
                       <PhoneInput
                         country="us"
@@ -426,7 +431,7 @@ const Form = () => {
                         inputStyle={{ width: "100%" }}
                       />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
                       <Typography sx={{ pb: 1 }}>
                         <span style={{ color: "red" }}>*</span>Zip Code:
                       </Typography>
@@ -470,36 +475,36 @@ const Form = () => {
                         Menu
                       </Typography>
                       <Grid container spacing={2}>
-                        <Grid item xs={10} sx={{ px: 5 }}>
+                        <Grid item xs={8} sm={10} sx={{ px: {xs:1,sm:5} }}>
                           Chef Table: 6 courses tasting menu ($150.00) x 2
                           people
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={4} sm={2}>
                           $300.00
                         </Grid>
                       </Grid>
                     </Grid>
                     <Grid container spacing={2} sx={{ p: 2 }}>
-                      <Grid item xs={10}>
+                      <Grid item xs={8} sm={10}>
                         <Typography sx={{ pl: 0.5 }}> Subtotal:</Typography>
                       </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={4} sm={2}>
                         $300.00
                       </Grid>
                     </Grid>
                     <Divider sx={{ borderBottom: "1px dashed #ced1d4" }} />
                     <Grid container spacing={2} sx={{ p: 2 }}>
-                      <Grid item xs={2}>
+                      <Grid item xs={4} sm={2}>
                         <Typography>Coupon:</Typography>
                       </Grid>
-                      <Grid item xs={8}>
+                      <Grid item xs={8} sm={8}>
                         <Input
                           startDecorator={<AccountBalanceWalletIcon />}
                           size="sm"
                           placeholder="Type in here…"
                         />
                       </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={2} sm={2}>
                         <Button
                           sx={{
                             background: "red",
@@ -517,10 +522,10 @@ const Form = () => {
                       </Grid>
                     </Grid>
                     <Grid container spacing={2} sx={{ px: 1 }}>
-                      <Grid item xs={10}>
+                      <Grid item xs={8} sm={10} >
                         <Typography sx={{ pl: 0.5 }}> Total Amount:</Typography>
                       </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={4} sm={2}>
                         <Typography>$300.00</Typography>
                       </Grid>
                     </Grid>

@@ -28,7 +28,7 @@ const Seafood = () => {
     return (
         <div>
           <Grid container spacing={4} sx={{ pt: {xs:"30px",sm:"80px"}, pb: '80px'}}>
-            <Grid item xs={12} sm={6}>
+            <Grid   data-aos="flip-left" data-aos-duration="1500" item xs={12} sm={6}>
               <Typography
                 variant="h4"
                 sx={{
@@ -102,7 +102,7 @@ const Seafood = () => {
               </Grid>
             </Grid>
     
-            <Grid item xs={12} sm={6}>
+            <Grid item  data-aos="flip-right" data-aos-duration="1500" xs={12} sm={6}>
             <CardMedia component="img" image={contentImg1} sx={{height:{xs:'100%',lg:'100%'} }} />
               
             </Grid>

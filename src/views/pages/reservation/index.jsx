@@ -18,7 +18,7 @@ const Rreservation = () => {
           <Grid  sx={{background:"#f0edea"}}>
           <BookRreservation/>
           </Grid>
-          <Grid  sx={{background:"#f0edea"}}>
+          <Grid  sx={{background:"#f0edea",pb:5}}>
           <Form/>
          </Grid>
          <Footer/>

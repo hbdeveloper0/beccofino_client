@@ -29,7 +29,8 @@ const FormSection = () => {
   return (
     <Container>
       <Grid container spacing={2} sx={{pb:9}}>
-        <Grid xs={12} sm={6} sx={{ pt: 7 }}>
+        <Grid data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom" data-aos-duration="1500" xs={12} sm={6} sx={{ pt: 7 }}>
           <Typography
             variant="h2"
             sx={{
@@ -122,7 +123,8 @@ const FormSection = () => {
             </Link>
           </Grid>
         </Grid>
-        <Grid xs={12} sm={6} sx={{ px: {xs:1,md:9}, pt: 7 }}>
+        <Grid data-aos="fade-down"
+        data-aos-anchor-placement="center-bottom" data-aos-duration="1500" xs={12} sm={6} sx={{ px: {xs:1,md:9}, pt: 7 }}>
         <form>
           <TextField
             fullWidth
