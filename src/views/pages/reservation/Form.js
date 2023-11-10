@@ -78,6 +78,7 @@ const top100Films = [
 // ==============================|| PROFILE 2 ||============================== //
 const Form = () => {
  
+  const [message, setMessage] = useState('');
   const [menuCaption, setmenuCaption] = useState();
   const [first, setFirst] = useState();
   const [category, setCategory] = useState('');
@@ -180,9 +181,7 @@ const Form = () => {
   const handelSaveClick = () => {
     const apiFormData = {fk_table_category_id: category, total_persons: count+1, reservation_date: a.currentdate, fk_time_slot_id: a.clickedButton,  ...userData, };
       axios.post(`${process.env.REACT_APP_API_URL}/reservation/book-Reservation`, apiFormData).then((response) =>{
-        
-      console.log(response)
-      alert('Booking Done Successfully')
+      setMessage('Booking Done Successfully')
       }).catch ((error) => {
           if (error.response) {
             // The request was made and the server responded with a status code
@@ -530,6 +529,7 @@ const Form = () => {
                 <Typography sx={{ textAlign: "center", color: "#ced1d4" }}>
                   You will be redirected to the payment checkout.
                 </Typography>
+                <Typography>{message}</Typography>
               </TabPanel>
             </Grid>
           </Grid>

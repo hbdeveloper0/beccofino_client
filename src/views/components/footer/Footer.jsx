@@ -117,11 +117,13 @@ const Footer2 = () => {
                 </Typography>
                 <Box sx={{ marginTop: "10px" }}>
                   <Link
+                    onClick={()=> a.setModelOpen(true)}
                     sx={{
                       color: "#111010",
                       fontSize: "14px",
                       fontFamily: "Montserrat  Sans-serif",
                       fontWeight: "600",
+                      cursor: 'pointer'
                     }}
                     variant="text"
                   >
