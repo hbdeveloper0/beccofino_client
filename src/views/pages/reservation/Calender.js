@@ -38,24 +38,33 @@
 //   );
 // }
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Calendar, theme } from "antd";
 import { Button, Container, Grid, Typography } from "@mui/material";
 import dayjs from "dayjs";
 
+import ModelContext from "../../../context/ModelContext";
+import moment from 'moment';
+import axios from 'axios'
+
 const App = () => {
   const { token } = theme.useToken();
-  const [currentdate, setcurrentdate] = useState(null);
-  const [clickedButton, setClickedButton] = useState(null);
+  const a = useContext(ModelContext)
+
+  const [dayName, setDayName] = useState('')
+  const [timeSlots, setTimeSlots] = useState('')
 
   const onPanelChange = (value, mode) => {
-    const formattedDate = dayjs(value).format("dddd, MMMM D, YYYY hh:mm A");
-    console.log(formattedDate, mode);
-    setcurrentdate(formattedDate);
+    // const formattedDate = dayjs(value).format("dddd, MMMM D, YYYY hh:mm A");
+    const formattedDate = dayjs(value).format("MMMM D, YYYY");
+    // console.log(formattedDate, mode);
+    a.setcurrentdate(formattedDate);
+    const day_name = dayjs(value).format("dddd");
+    setDayName(day_name)
   };
 
   const handleButtonClick = (buttonId) => {
-    setClickedButton(buttonId);
+    a.setClickedButton(buttonId);
   };
 
   const wrapperStyle = {
@@ -63,10 +72,46 @@ const App = () => {
     padding: "20px",
     border: `1px solid ${token.colorBorderSecondary}`,
     borderRadius: token.borderRadiusLG,
+
   };
 
   
+  const dateCellRender = date => {
+    // You can add an ID to each cell based on the date
+    const cellId = `cell-${date.format('YYYY-MM-DD')}`;
+    // Render the cell content with the ID
+    return <div id={cellId}></div>;
+    
+  };
 
+  // Define a function to disable specific days
+  const disabledDate = current => {
+    const today = moment();
+    // In this example, we hide Sundays (day 0) and Saturdays (day 6)
+    return current.isBefore(today) || current.day() === 0 || current.day() === 1 || current.day() === 2;
+  };
+
+  useEffect(() => {
+    if(dayName !== ''){
+      const day_name = dayName.toLowerCase();
+      console.log(day_name)
+      axios.post(`${process.env.REACT_APP_API_URL}/reservation/get-TimeSlots`, {day_name}).then((response) =>{
+        console.log(response.data.data.TimeSlots)
+        setTimeSlots(response.data.data.TimeSlots)
+        // console.log(response)
+        }).catch ((error) => {
+            if (error.response) {
+              // The request was made and the server responded with a status code
+              console.log('Response data:', error.response);
+            } else {
+              // Something happened in setting up the request
+              console.error('Error:', error.message);
+            }
+        })
+    }
+  
+  },[dayName])
+  
 
   return (
     <>
@@ -74,24 +119,50 @@ const App = () => {
         Date & Time
       </Typography>
       <Grid style={wrapperStyle}>
-        <Calendar fullscreen={false} onSelect={onPanelChange} />
+        <Calendar disabledDate={disabledDate} fullscreen={false} onSelect={onPanelChange} />
       </Grid>
 
 
-      {currentdate && <Container>
+      {a.currentdate && <Container>
         <Typography sx={{ p: 1 }}>
-          {currentdate}
+          {a.currentdate}
         </Typography>
         <Grid container spacing={2} sx={{ p: 1 }}>
-          <Grid item xs={6}>
+        
+        {(timeSlots !== '') ? 
+          timeSlots.map((timeSlot) => (
+            
+              <Grid item xs={6} key={timeSlot.id}>
+                <Button
+                  fullWidth
+                  onClick={() => handleButtonClick(timeSlot.id)}
+                  sx={{
+                    border: "1px solid #f46e74",
+                    color: a.clickedButton === timeSlot.id ? "#FFFF" : "#f46e74",
+                    fontSize: "17px",
+                    background: a.clickedButton === timeSlot.id ? "red" : "#fde8e9",
+                    ":hover":{color:"black"}
+                  }}
+                >
+                  {timeSlot.slot_starting_time} - {timeSlot.slot_ending_time}
+              </Button>
+          </Grid>
+          ))
+          :
+          ''
+        }
+    
+
+     
+          {/*<Grid item xs={6}>
             <Button
               fullWidth
               onClick={() => handleButtonClick(1)}
               sx={{
                 border: "1px solid #f46e74",
-                color: clickedButton === 1 ? "#FFFF" : "#f46e74",
+                color: a.clickedButton === 1 ? "#FFFF" : "#f46e74",
                 fontSize: "17px",
-                background: clickedButton === 1 ? "red" : "#fde8e9",
+                background: a.clickedButton === 1 ? "red" : "#fde8e9",
                 ":hover":{color:"black"}
               }}
             >
@@ -104,9 +175,9 @@ const App = () => {
               onClick={() => handleButtonClick(2)}
               sx={{
                 border: "1px solid #f46e74",
-                color: clickedButton === 2 ? "#FFFF" : "#f46e74",
+                color: a.clickedButton === 2 ? "#FFFF" : "#f46e74",
                 fontSize: "17px",
-                background: clickedButton === 2 ? "red" : "#fde8e9",
+                background: a.clickedButton === 2 ? "red" : "#fde8e9",
                 ":hover":{color:"black"}
               }}
             >
@@ -119,9 +190,9 @@ const App = () => {
               onClick={() => handleButtonClick(3)}
               sx={{
                 border: "1px solid #f46e74",
-                color: clickedButton === 3 ? "#FFFF" : "#f46e74",
+                color: a.clickedButton === 3 ? "#FFFF" : "#f46e74",
                 fontSize: "17px",
-                background: clickedButton === 3 ? "red" : "#fde8e9",
+                background: a.clickedButton === 3 ? "red" : "#fde8e9",
                 ":hover":{color:"black"}
               }}
             >
@@ -134,15 +205,15 @@ const App = () => {
               onClick={() => handleButtonClick(4)}
               sx={{
                 border: "1px solid #f46e74",
-                color: clickedButton === 4 ? "#FFFF" : "#f46e74",
+                color: a.clickedButton === 4 ? "#FFFF" : "#f46e74",
                 fontSize: "17px",
-                background: clickedButton === 4 ? "red" : "#fde8e9",
+                background: a.clickedButton === 4 ? "red" : "#fde8e9",
                 ":hover":{color:"black"}
               }}
             >
               8:15 PM - 9:00 PM
             </Button>
-          </Grid>
+            </Grid>*/}
         </Grid>
       </Container> }
     </>

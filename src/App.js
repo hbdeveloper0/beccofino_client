@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter as Router } from 'react-router-dom';
 
 import Home from './views/pages/Home';
 import Media from './views/pages/media'
@@ -9,9 +10,12 @@ import Menu from './views/pages/Menu';
 import Contact from './views/pages/contact';
 import Checkout from './views/pages/reservation/checkout';
 
+import ModelState from './context/ModelState';
+
 
 function App() {
   return (
+    <ModelState>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/media" element={<Media />} />
@@ -21,6 +25,7 @@ function App() {
       <Route path="/contact" element={<Contact/>} />
       <Route path="/checkout" element={<Checkout/>} />
     </Routes>
+    </ModelState>
   );
 }
 

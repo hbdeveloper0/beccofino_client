@@ -1,12 +1,18 @@
-import React from "react";
-import { Grid, Container, Box, Typography, Link, Button } from "@mui/material";
+import React, {useContext} from 'react'
+import ModelContext from '../../../context/ModelContext';
+import { Grid, Container, Box, Typography, Link, Button } from '@mui/material'
 
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GoogleIcon from "@mui/icons-material/Google";
 import SouthEastIcon from "@mui/icons-material/SouthEast";
 
+import SignUpModel from './../models/SignUpModel';
+
 const Footer2 = () => {
+    const a = useContext(ModelContext)
+    const handleOpenModel = () => a.setModelOpen(true);
+    
   return (
     <Grid container>
       <Grid item xs={12} sx={{ backgroundColor: "#111010", height: "100%" }}>
@@ -111,11 +117,13 @@ const Footer2 = () => {
                 </Typography>
                 <Box sx={{ marginTop: "10px" }}>
                   <Link
+                    onClick={()=> a.setModelOpen(true)}
                     sx={{
                       color: "#111010",
                       fontSize: "14px",
                       fontFamily: "Montserrat  Sans-serif",
                       fontWeight: "600",
+                      cursor: 'pointer'
                     }}
                     variant="text"
                   >
@@ -218,9 +226,12 @@ const Footer2 = () => {
             </Container>
           </Grid>
         </Grid>
-      </Grid>
-    </Grid>
-  );
-};
 
+        <SignUpModel />
+        </Grid>
+        </Grid>
+      
+    )
+}
+  
 export default Footer2;

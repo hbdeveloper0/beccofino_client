@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Input from "@mui/joy/Input";
@@ -27,16 +27,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
 // assets
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import PersonOutlineTwoToneIcon from "@mui/icons-material/PersonOutlineTwoTone";
 import PaymentIcon from "@mui/icons-material/Payment";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { useState } from "react";
 import MyApp from "./Calender";
 
+import axios from 'axios'
+
+import ModelContext from "../../../context/ModelContext";
 // tabs
 function TabPanel({ children, value, index, ...other }) {
   return (
@@ -51,43 +52,20 @@ function TabPanel({ children, value, index, ...other }) {
     </div>
   );
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-
 // tabs option
-const tabsOption = [
-  {
-    label: "Menu Selection",
-    icon: <CheckCircleIcon />,
-    caption: "Menu Selection",
-  },
-  {
-    label: "Date & Time",
-    icon: <EventNoteIcon />,
-    caption: "Date & Time",
-  },
-  {
-    label: "Your Information",
-    icon: <PersonOutlineTwoToneIcon />,
-    caption: "Your Information",
-  },
-  {
-    label: "Payments",
-    icon: <PaymentIcon />,
-    caption: "Payments",
-  },
-];
+
+
 const top100Films = [
   { label: "The Dark Knight", id: 1 },
   { label: "Control with Control", id: 2 },
@@ -97,14 +75,61 @@ const top100Films = [
   { label: "Fight Clubaaa", id: 6 },
   { label: "Pulp Fiction", id: 7 },
 ];
-
 // ==============================|| PROFILE 2 ||============================== //
-
 const Form = () => {
+ 
+  const [message, setMessage] = useState('');
+  const [menuCaption, setmenuCaption] = useState();
+  const [first, setFirst] = useState();
+  const [category, setCategory] = useState('');
+  const a = useContext(ModelContext);
+  const [userData, setUserData] = useState({first_name:'', last_name:'', email:'', phone:'', zip_code:''});
+
+  const [showPaymentTab, setShowPaymentTab] = useState(false)
+
+  const tabsOption = [
+    {
+      label: "Menu Selection",
+      icon: <CheckCircleIcon />,
+      caption: menuCaption,
+    },
+    {
+      label: "Date & Time",
+      icon: <EventNoteIcon />,
+      caption: "Date & Time",
+    },
+    {
+      label: "Your Information",
+      icon: <PersonOutlineTwoToneIcon />,
+      caption: "Your Information",
+    },
+    (showPaymentTab) ? 
+    {
+      label: "Payments",
+      icon: <PaymentIcon />,
+      caption: "Payments",
+    } : {}
+
+  ];
+
+  useEffect(() =>{
+    axios.get(`${process.env.REACT_APP_API_URL}/reservation/category-selection`).then((response) =>{
+      console.log(response.data.data.categories)
+      setFirst(response.data.data.categories);
+    }).catch ((error) => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.log('Response data:', error.response);
+      } else {
+        // Something happened in setting up the request
+        console.error('Error:', error.message);
+      }
+    })
+  },[])
+
   const theme = useTheme();
   // const { borderRadius } = useConfig();
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -119,6 +144,55 @@ const Form = () => {
       alert("min limit reached");
     }
   };
+
+
+  const handlePhoneInputChange = (value) => {
+    setUserData({...userData, phone: value});
+  }; 
+
+  const handleCategoryChange = (event, newValue) => {
+    if (newValue) {
+      setCategory(newValue.id);
+      setmenuCaption(newValue.label)
+    } else {
+      setCategory('');
+      setmenuCaption('')
+    }
+  };
+
+  useEffect(() => {
+    if(category !== ''){
+      const category_id  = category;
+      axios.post(`${process.env.REACT_APP_API_URL}/reservation/get-category`, {category_id}).then((response) =>{
+          console.log(response.data.data.category)
+          setShowPaymentTab(response.data.data.category.pre_payment)
+          }).catch ((error) => {
+              if (error.response) {
+                // The request was made and the server responded with a status code
+                console.log('Response data:', error.response);
+              } else {
+                // Something happened in setting up the request
+                console.error('Error:', error.message);
+              }
+          })
+    }
+  },[category])
+
+  const handelSaveClick = () => {
+    const apiFormData = {fk_table_category_id: category, total_persons: count+1, reservation_date: a.currentdate, fk_time_slot_id: a.clickedButton,  ...userData, };
+      axios.post(`${process.env.REACT_APP_API_URL}/reservation/book-Reservation`, apiFormData).then((response) =>{
+      setMessage('Booking Done Successfully')
+      }).catch ((error) => {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            console.log('Response data:', error.response);
+          } else {
+            // Something happened in setting up the request
+            console.error('Error:', error.message);
+          }
+      })
+    
+  }
 
   return (
     <Motion>
@@ -241,14 +315,18 @@ const Form = () => {
                   <Typography sx={{ pb: 1 }}>
                     <span style={{ color: "red" }}>*</span>Menu:
                   </Typography>
+               
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
-                    defaultValue={top100Films[3]}
+                    options={first}
+                    // defaultValue={first[0].id}
+                    onChange={handleCategoryChange}
                     renderInput={(params) => (
-                      <TextField {...params} label="Select Menu" />
+                      <TextField {...params} label="Select Menu"/>
                     )}
+                   
                   />
+                      
                 </Grid>
                 <Grid sx={{p:6}}>
                 <Grid sx={{ p: 1.5 ,border: "1px solid #babfc3",borderRadius:2}}>
@@ -277,7 +355,7 @@ const Form = () => {
                           <IconButton onClick={DecNum} sx={{ pl: 2 }} disabled={count === 1}>
                           <RemoveIcon size="small" />
                         </IconButton>
-                          <Typography sx={{ p: 1 }}>{count}</Typography>
+                          <Typography sx={{ p: 1 }} >{count}</Typography>
                           <IconButton onClick={IncNum} sx={{ pr: 2 }} disabled={count === 9}>
                           <AddIcon />
                         </IconButton>
@@ -308,6 +386,9 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='first_name'
+                        onChange={(e)=> setUserData({...userData, first_name: e.target.value})}
+                        
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -316,6 +397,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='last_name'
+                        onChange={(e)=> setUserData({...userData, last_name: e.target.value})}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -326,6 +409,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='email'
+                        onChange={(e)=> setUserData({...userData, email: e.target.value})}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -337,6 +422,7 @@ const Form = () => {
                           name: "phone",
                           required: true,
                         }}
+                        onChange={handlePhoneInputChange}
                         inputStyle={{ width: "100%" }}
                       />
                     </Grid>
@@ -348,6 +434,8 @@ const Form = () => {
                         fullWidth
                         id="outlined-email-address"
                         placeholder="Email Address"
+                        name='zip_code'
+                        onChange={(e)=> setUserData({...userData, zip_code: e.target.value})}
                       />
                     </Grid>
                   </Grid>
@@ -400,7 +488,6 @@ const Form = () => {
                       </Grid>
                     </Grid>
                     <Divider sx={{ borderBottom: "1px dashed #ced1d4" }} />
-
                     <Grid container spacing={2} sx={{ p: 2 }}>
                       <Grid item xs={2}>
                         <Typography>Coupon:</Typography>
@@ -442,6 +529,7 @@ const Form = () => {
                 <Typography sx={{ textAlign: "center", color: "#ced1d4" }}>
                   You will be redirected to the payment checkout.
                 </Typography>
+                <Typography>{message}</Typography>
               </TabPanel>
             </Grid>
           </Grid>
@@ -503,6 +591,7 @@ const Form = () => {
                     },
                   }}
                   size="large"
+                  onClick={handelSaveClick}
                 >
                   save
                 </Button>
@@ -515,5 +604,4 @@ const Form = () => {
     </Motion>
   );
 };
-
 export default Form;
